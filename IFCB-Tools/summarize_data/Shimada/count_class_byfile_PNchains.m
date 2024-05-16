@@ -1,7 +1,9 @@
-function [PNcount_above_optthresh,PNcount,opt_cell1,opt_cell2,opt_cell3,opt_cell4,wta_cell1,wta_cell2,wta_cell3,wta_cell4]=TBclass_summarize_PN_width(classfile,feafile,micron_factor)
-%function [PNcount_above_optthresh,PNcount,PNwidth_above_optthresh,PNwidth,opt_cell1,opt_cell2,opt_cell3,opt_cell4,wta_cell1,wta_cell2,wta_cell3,wta_cell4]=TBclass_summarize_PN_width(classfile,feafile,micron_factor)
+function [PNcount_above_optthresh,PNcount,...
+    opt_cell1,opt_cell2,opt_cell3,opt_cell4,...
+    wta_cell1,wta_cell2,wta_cell3,wta_cell4]=...
+    count_class_byfile_PNchains(classfile,feafile,micron_factor)
 %
-% Alexis D. Fischer, NOAA, April 2023
+% A.D. Fischer, April 2023
 %%
 % % % %Example inputs for testing
 % i=1; %122

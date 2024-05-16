@@ -1,5 +1,5 @@
-function [ ] = summarize_biovol_eqdiam_from_features(out_dir,roibasepath,feapath_base,yr)
-%function [ ] = summarize_biovol_eqdiam_from_features(out_dir,roibasepath,feapath_base,yr)
+function [ ] = summarize_features_biovol_size_byROI(out_dir,roibasepath,feapath_base,yr)
+%function [ ] = summarize_features_biovol_size_byROI(out_dir,roibasepath,feapath_base,yr)
 %
 % Inputs Features files and outputs a summary file of biovolume and equivalent spherical diameter
 % Alexis D. Fischer, University of California - Santa Cruz, April 2018

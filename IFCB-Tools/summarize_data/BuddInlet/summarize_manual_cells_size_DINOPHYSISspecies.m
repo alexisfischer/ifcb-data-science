@@ -1,5 +1,5 @@
-function [ ] = summarize_Dinophysis_species_width_from_manual(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
-%function [ ] = summarize_Meso_width_from_manual(summarydir,feapath_generic,roibasepath_generic,manualpath_generic,yrrange)
+function [ ] = summarize_manual_cells_size_DINOPHYSISspecies(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
+%function [ ] = summarize_manual_cells_size_DINOPHYSISspecies(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
 % Inputs classifier and features files and outputs a summary file of
 % minor axis length for all Pseudo-nitzschia chain lengths
 %
@@ -70,7 +70,7 @@ unknownDinophysis=acuminata;
 num2dostr = num2str(length(manualfiles));
 for i = 1:length(manualfiles)
    if ~rem(i,100), disp(['reading ' num2str(i) ' of ' num2dostr]), end
-     [acum,fort,norv,parv,odio,rotu,acut,unkn]=manual_summarize_Dino_width_individual(manualfiles{i},feafiles{i},micron_factor);
+     [acum,fort,norv,parv,odio,rotu,acut,unkn]=count_manual_byfile_DINOPHYSISspecies(manualfiles{i},feafiles{i},micron_factor);
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtype{i}=hdr.runtype;
     filecomment{i}=hdr.filecomment;    

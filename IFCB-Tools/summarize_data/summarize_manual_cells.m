@@ -1,5 +1,5 @@
-function [ ] = summarize_cells_from_manual( manualpath, datapath, summary_dir)
-%function [ ] = summarize_cells_from_manual( manualpath, datapath, summary_dir)
+function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
+%function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
 % summarizes class results for a series of manual annotation files (as saved by startMC)
 %  Alexis D. Fischer, University of California - Santa Cruz, January 2019
 %%

@@ -1,26 +1,17 @@
-function [] = summarize_biovol_from_classifier_BI_yrrange(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
-%function [] = summarize_biovol_from_classifier(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,yrrange)
+function [] = summarize_class_cells_biovol_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+%function [] = summarize_class_cells_biovol_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
 %
 % Inputs automatic classified results and outputs a summary file of counts and biovolume
 % Alexis D. Fischer, University of California - Santa Cruz, June 2018
 %%
-clear
-summarydir_base='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
-summaryfolder='IFCB-Data\BuddInlet\class\';
-classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
-feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
-roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-yrrange = 2021:2023;
-micron_factor=1/3.8;
-
 % clear
 % summarydir_base='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
-% summaryfolder='IFCB-Data\test\';
-% classpath_generic = 'F:\LabData\Brian_PN_expt\class\classxxxx_v1\';
-% feapath_generic = 'F:\LabData\Brian_PN_expt\features\xxxx\'; %Put in your featurepath byyear
-% roibasepath_generic = 'F:\LabData\Brian_PN_expt\data\xxxx\'; %location of raw data
-% yrrange = 2023;
-% micron_factor=1/2.7;
+% summaryfolder='IFCB-Data\BuddInlet\class\';
+% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
+% feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
+% roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
+% yrrange = 2021:2023;
+% micron_factor=1/3.8;
 
 classfiles = [];
 filelistTB = [];
@@ -76,29 +67,21 @@ ESDTB = classcountTB;
 ESD_above_optthreshTB = classcountTB;
 ESD_above_adhocthreshTB = classcountTB;
 
-graylevelTB = classcountTB;
-graylevel_above_optthreshTB = classcountTB;
-graylevel_above_adhocthreshTB = classcountTB;
-
 adhocthresh = 0.5.*ones(1,length(class2useTB)-1); %leave off 1 for unclassified
-adhocthresh(contains(class2useTB,'Dinophysis')) = 0.75; %example to change a specific class
-adhocthresh(contains(class2useTB,'Mesodinium')) = 0.5;
+%adhocthresh(contains(class2useTB,'Dinophysis')) = 0.75; %example to change a specific class
 
 runtypeTB=filelistTB;
 filecommentTB=filelistTB;
 num2dostr = num2str(length(classfiles));
 clearvars feapath_generic classpath_generic roibasepath_generic i
-%%
-%for i = 1:length(classfiles)
-for i = 22018:length(classfiles)
 
+for i = 1:length(classfiles)
     if ~rem(i,10), disp(['reading ' num2str(i) ' of ' num2dostr]), end
 
      [classcountTB(i,:), classcount_above_optthreshTB(i,:), classcount_above_adhocthreshTB(i,:),...
          classbiovolTB(i,:), classbiovol_above_optthreshTB(i,:), classbiovol_above_adhocthreshTB(i,:),...
-         ESDTB(i,:), ESD_above_optthreshTB(i,:), ESD_above_adhocthreshTB(i,:),...         
-          graylevelTB(i,:), graylevel_above_optthreshTB(i,:), graylevel_above_adhocthreshTB(i,:)]...
-         = summarize_TBclassBI(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
+         ESDTB(i,:), ESD_above_optthreshTB(i,:), ESD_above_adhocthreshTB(i,:)]...
+         = count_class_byfile(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
 
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtypeTB{i}=hdr.runtype;

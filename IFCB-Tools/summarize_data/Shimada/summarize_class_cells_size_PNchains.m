@@ -1,5 +1,5 @@
-function [ ] = summarize_PN_width_from_classifier(summarydir,feapath_generic,roibasepath_generic,classpath_generic,micron_factor,yrrange)
-%function [ ] = summarize_PN_width_from_classifier(summarydir,feapath_generic,roibasepath_generic,classpath_generic,yrrange)
+function [ ] = summarize_class_cells_size_PNchains(summarydir,feapath_generic,roibasepath_generic,classpath_generic,micron_factor,yrrange)
+%function [ ] = summarize_class_cells_size_PNchains(summarydir,feapath_generic,roibasepath_generic,classpath_generic,micron_factor,yrrange)
 % Inputs classifier and features files and outputs a summary file of
 % minor axis length for all Pseudo-nitzschia chain lengths
 %
@@ -66,7 +66,7 @@ PNcount=NaN(length(classfiles),1);
 for i = 1:length(classfiles)
     if ~rem(i,100), disp(['reading ' num2str(i) ' of ' num2dostr]), end  
     [PNcount_above_optthresh(i),PNcount(i),opt_cell1,opt_cell2,opt_cell3,...
-        wta_cell1,wta_cell2,wta_cell3]=TBclass_summarize_PN_width(classfiles{i},feafiles{i},micron_factor);
+        wta_cell1,wta_cell2,wta_cell3]=count_class_byfile_PNchains(classfiles{i},feafiles{i},micron_factor);
 
     PNwidth_opt(i).cell1=opt_cell1;
     PNwidth_opt(i).cell2=opt_cell2;

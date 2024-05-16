@@ -1,7 +1,6 @@
-function [count,size,stdev]=manual_summarize_Meso_width(manualfile,feafile,micron_factor)
-%function [large_PN,small_PN,Lcell1,Lcell2,Lcell3,Lcell4,Scell1,Scell2,Scell3,Scell4]=manual_summarize_Meso_width(manualfile,feafile,micron_factor)
+function [total,small,large,size]=count_manual_byfile_MESODINIUM(manualfile,feafile,micron_factor)
 %
-% Alexis D. Fischer, NOAA, May 2023
+% A.D. Fischer, May 2023
 %
 %% % % %Example inputs for testing
 % i=161
@@ -18,9 +17,11 @@ targets.roi_number = feastruct.data(:,ind);
 
 [~,~,ig]=intersect(find(classlist(:,2)==find(strcmp('Mesodinium',class2use_manual))),targets.roi_number); 
 [~,~,ib]=intersect(find(classlist(:,2)==find(strcmp('Mesodinium_bad',class2use_manual))),targets.roi_number); 
-count=length([ig;ib]);
-size=mean([targets.ESD(ig);targets.ESD(ib)]);
-stdev=std([targets.ESD(ig);targets.ESD(ib)]);
+total=length([ig;ib]);
+size=[targets.ESD(ig);targets.ESD(ib)];
+
+large=length(find(size>19));
+small=total-large;
 
 mlen=classlist(end,1); flen=targets.roi_number(end);
 if mlen==flen

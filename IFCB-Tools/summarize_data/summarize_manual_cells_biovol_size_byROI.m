@@ -1,7 +1,8 @@
-function [ ] = summarize_biovol_from_manual_perROI(manualpath,out_dir,roibasepath,feapath_base,yr,micron_factor)
-%function [ ] = summarize_biovol_eqdiam_from_manual(manualpath,out_dir,roibasepath,feapath_base,yr,micron_factor)
+function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,out_dir,roibasepath,feapath_base,yr,micron_factor)
+%function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,out_dir,roibasepath,feapath_base,yr,micron_factor)
 %
-% Inputs manually classified results and outputs a summary file of counts, biovolume, and equivalent spherical diameter
+% Inputs manually classified results and outputs a summary file of counts, 
+% biovolume, and equivalent spherical diameter
 % Alexis D. Fischer, NOAA, August 2021
 %
 %Example inputs

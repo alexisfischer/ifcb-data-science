@@ -1,19 +1,20 @@
-function [] = summarize_biovol_from_classifier_Dinophysis_yrrange(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
-%function [] = summarize_biovol_from_classifier(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,yrrange)
+function [] = summarize_class_cells_biovol_size_DINOPHYSIS(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+%function [] = summarize_class_cells_biovol_size_DINOPHYSIS(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+% summarizes total Dinophysis cell count and biovolume, mean gray level, 
+% mean size, and small and large size classes for complete dataset
+% runs function count_class_Dinophysis_byfile
+% Used in Budd Inlet Project
+% A.D. Fischer, April 2024
 %
-% Inputs automatic classified results and outputs a summary file of counts and biovolume
-% only for Dinophysis
 %
-%%
-clear
-summarydir_base='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
-summaryfolder='IFCB-Data\BuddInlet\class\';
-classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
-feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
-roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-%yrrange = 2021:2023;
-yrrange=2023;
-micron_factor=1/3.8;
+% %Example Inputs
+% summarydir_base='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
+% summaryfolder='IFCB-Data\BuddInlet\class\';
+% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
+% feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
+% roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
+% yrrange = 2021:2023;
+% micron_factor=1/3.8;
 
 classfiles = [];
 filelistTB = [];
@@ -54,9 +55,14 @@ end
 mdateTB = IFCB_file2date(filelistTB);
 ml_analyzedTB = IFCB_volume_analyzed(hdrname); 
 
-%% preallocate
-adhocthresh = 0.75; %dinophysis threshold
+%%% preallocate
+load(classfiles{1}, 'class2useTB');
+adhocthresh = 0.5.*ones(1,length(class2useTB)-1); %leave off 1 for unclassified
+adhocthresh(contains(class2useTB,'Dinophysis')) = 0.75; %example to change a specific class
+
 dinocount_above_adhocthreshTB = NaN(length(classfiles),1);
+smallcount_above_adhocthreshTB = dinocount_above_adhocthreshTB;
+largecount_above_adhocthreshTB = dinocount_above_adhocthreshTB;
 dinobiovol_above_adhocthreshTB = dinocount_above_adhocthreshTB;
 dinoESD_above_adhocthreshTB = dinocount_above_adhocthreshTB;
 dinogray_above_adhocthreshTB = dinocount_above_adhocthreshTB;
@@ -69,11 +75,10 @@ clearvars feapath_generic classpath_generic roibasepath_generic i
 for i = 1:length(classfiles)
     if ~rem(i,10), disp(['reading ' num2str(i) ' of ' num2dostr]), end
 
-     [classcountTB(i,:), classcount_above_optthreshTB(i,:), classcount_above_adhocthreshTB(i,:),...
-         classbiovolTB(i,:), classbiovol_above_optthreshTB(i,:), classbiovol_above_adhocthreshTB(i,:),...
-         ESDTB(i,:), ESD_above_optthreshTB(i,:), ESD_above_adhocthreshTB(i,:),...         
-          graylevelTB(i,:), graylevel_above_optthreshTB(i,:), graylevel_above_adhocthreshTB(i,:)]...
-         = summarize_TBclassBI(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
+     [dinocount_above_adhocthreshTB(i), dinobiovol_above_adhocthreshTB(i),...
+         dinoESD_above_adhocthreshTB(i), dinogray_above_adhocthreshTB(i),...
+         smallcount_above_adhocthreshTB(i),largecount_above_adhocthreshTB(i)]...
+         = count_class_byfile_DINOPHYSIS(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
 
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtypeTB{i}=hdr.runtype;
@@ -85,9 +90,9 @@ if ~exist([summarydir_base summaryfolder], 'dir')
     mkdir(resultpath)
 end
 
-save([summarydir_base summaryfolder 'summary_biovol_allTB'] ,'*TB')
+save([summarydir_base summaryfolder 'summary_Dinophysis_allTB'] ,'*TB')
 
 disp('Summary file stored here:')
-disp([summarydir_base summaryfolder 'summary_biovol_allTB'])
+disp([summarydir_base summaryfolder 'summary_Dinophysis_allTB'])
 
 end

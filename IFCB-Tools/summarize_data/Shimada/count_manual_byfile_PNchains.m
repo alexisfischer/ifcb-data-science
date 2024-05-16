@@ -1,5 +1,5 @@
-function [large_PN,small_PN,Lcell1,Lcell2,Lcell3,Scell1,Scell2,Scell3]=manual_summarize_PN_width(manualfile,feafile,micron_factor)
-%function [large_PN,small_PN,Lcell1,Lcell2,Lcell3,Lcell4,Scell1,Scell2,Scell3,Scell4]=manual_summarize_PN_width(manualfile,feafile,micron_factor)
+function [large_PN,small_PN,Lcell1,Lcell2,Lcell3,Scell1,Scell2,Scell3]...
+    =count_manual_byfile_PNchains(manualfile,feafile,micron_factor)
 %
 % Alexis D. Fischer, NOAA, May 2023
 %

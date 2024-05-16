@@ -1,16 +1,18 @@
 function [dinocount_above_adhocthresh, dinobiovol_above_adhocthresh,...
          dinoESD_above_adhocthresh, dinogray_above_adhocthresh,...
          smallcount_above_adhocthresh,largecount_above_adhocthresh]...
-         = summarize_Dinophysis_BI(classfile, feafile, micron_factor, adhocthresh)
-% Alexis D. Fischer, NOAA, April 2024
-
-%% uncomment for troubleshooting
+         = count_class_byfile_DINOPHYSIS(classfile, feafile, micron_factor, adhocthresh)
+%% summarizes total Dinophysis cell count and biovolume, mean gray level, 
+% mean size, and small and large size classes in each file
+% A.D. Fischer, April 2024
+%
+% %uncomment for troubleshooting
 % i=2200;
 % clearvars *TB
 % classfile=classfiles{i};
 % feafile=feafiles{i};
 
-load(classfile,'TBclass','TBclass_above_threshold','TBscores','class2useTB');
+load(classfile,'TBclass','TBscores','class2useTB');
 %disp(classfile)
 
 feastruct = importdata(feafile);

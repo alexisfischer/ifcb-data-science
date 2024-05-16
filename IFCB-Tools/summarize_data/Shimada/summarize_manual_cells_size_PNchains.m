@@ -1,5 +1,5 @@
-function [ ] = summarize_PN_width_from_manual(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
-%function [ ] = summarize_PN_width_from_manual(summarydir,feapath_generic,roibasepath_generic,manualpath_generic,yrrange)
+function [ ] = summarize_manual_cells_size_PNchains(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
+%function [ ] = summarize_manual_cells_size_PNchains(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
 % Inputs classifier and features files and outputs a summary file of
 % minor axis length for all Pseudo-nitzschia chain lengths
 %
@@ -66,7 +66,7 @@ for i = 1:length(manualfiles)
    if ~rem(i,100), disp(['reading ' num2str(i) ' of ' num2dostr]), end  
 
     [large_PN(i),small_PN(i),Lcell1,Lcell2,Lcell3,Lcell4,...
-        Scell1,Scell2,Scell3,Scell4]=manual_summarize_PN_width(manualfiles{i},feafiles{i},micron_factor);
+        Scell1,Scell2,Scell3,Scell4]=count_manual_byfile_PNchains(manualfiles{i},feafiles{i},micron_factor);
 
     PNwidth_large(i).cell1=Lcell1;
     PNwidth_large(i).cell2=Lcell2;

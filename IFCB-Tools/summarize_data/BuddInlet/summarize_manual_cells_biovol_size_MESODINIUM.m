@@ -1,8 +1,8 @@
-function [ ] = summarize_Meso_width_from_manual(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
-%function [ ] = summarize_Meso_width_from_manual(summarydir,feapath_generic,roibasepath_generic,manualpath_generic,yrrange)
+function [ ] = summarize_manual_cells_biovol_size_MESODINIUM(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
+%function [ ] = summarize_manual_cells_biovol_size_MESODINIUM(summarydir,feapath_generic,roibasepath_generic,manualpath,micron_factor,yrrange)
 % Inputs classifier and features files and outputs a summary file of
 % minor axis length for all Pseudo-nitzschia chain lengths
-%
+% runs count_manual_Mesodinium_byfile
 % Alexis D. Fischer, NOAA NWFSC, April 2023
 %%
 % %% Example inputs
@@ -66,7 +66,7 @@ ESD=cell(length(mdate),1);
 num2dostr = num2str(length(manualfiles));
 for i = 1:length(manualfiles)
    if ~rem(i,100), disp(['reading ' num2str(i) ' of ' num2dostr]), end
-     [total(i),small(i),large(i),size]=manual_summarize_Meso_width_individual(manualfiles{i},feafiles{i},micron_factor);
+     [total(i),small(i),large(i),size]=count_manual_byfile_MESODINIUM(manualfiles{i},feafiles{i},micron_factor);
 
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtype{i}=hdr.runtype;

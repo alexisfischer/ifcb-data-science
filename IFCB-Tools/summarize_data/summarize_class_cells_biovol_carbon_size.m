@@ -1,26 +1,17 @@
-function [] = summarize_biovol_from_classifier_BI_yrrange(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
-%function [] = summarize_biovol_from_classifier(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,yrrange)
+function [] = summarize_class_cells_biovol_carbon_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+%function [] = summarize_class_cells_biovol_carbon_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
 %
 % Inputs automatic classified results and outputs a summary file of counts and biovolume
 % Alexis D. Fischer, University of California - Santa Cruz, June 2018
 %%
-clear
-summarydir_base='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
-summaryfolder='IFCB-Data\BuddInlet\class\';
-classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
-feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
-roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-yrrange = 2021:2023;
-micron_factor=1/3.8;
-
 % clear
 % summarydir_base='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
-% summaryfolder='IFCB-Data\test\';
-% classpath_generic = 'F:\LabData\Brian_PN_expt\class\classxxxx_v1\';
-% feapath_generic = 'F:\LabData\Brian_PN_expt\features\xxxx\'; %Put in your featurepath byyear
-% roibasepath_generic = 'F:\LabData\Brian_PN_expt\data\xxxx\'; %location of raw data
-% yrrange = 2023;
-% micron_factor=1/2.7;
+% summaryfolder='IFCB-Data\BuddInlet\class\';
+% classpath_generic = 'F:\BuddInlet\class\classxxxx_v1\';
+% feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
+% roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
+% yrrange = 2021:2023;
+% micron_factor=1/3.8;
 
 classfiles = [];
 filelistTB = [];
@@ -62,28 +53,16 @@ end
 mdateTB = IFCB_file2date(filelistTB);
 ml_analyzedTB = IFCB_volume_analyzed(hdrname); 
 
-%%%% preallocate
+%preallocate
 load(classfiles{1}, 'class2useTB');
 classcountTB = NaN(length(classfiles),length(class2useTB));
-classcount_above_optthreshTB = classcountTB;
-classcount_above_adhocthreshTB = classcountTB;
-
+classcountTB_above_optthresh = classcountTB;
 classbiovolTB = classcountTB;
-classbiovol_above_optthreshTB = classcountTB;
-classbiovol_above_adhocthreshTB = classcountTB;
-
-ESDTB = classcountTB;
-ESD_above_optthreshTB = classcountTB;
-ESD_above_adhocthreshTB = classcountTB;
-
-graylevelTB = classcountTB;
-graylevel_above_optthreshTB = classcountTB;
-graylevel_above_adhocthreshTB = classcountTB;
-
-adhocthresh = 0.5.*ones(1,length(class2useTB)-1); %leave off 1 for unclassified
-adhocthresh(contains(class2useTB,'Dinophysis')) = 0.75; %example to change a specific class
-adhocthresh(contains(class2useTB,'Mesodinium')) = 0.5;
-
+classbiovolTB_above_optthresh = classcountTB;
+classC_TB = classcountTB;
+classC_TB_above_optthresh = classcountTB;
+classwidthTB = classcountTB;
+classwidthTB_above_optthresh = classcountTB;
 runtypeTB=filelistTB;
 filecommentTB=filelistTB;
 num2dostr = num2str(length(classfiles));
@@ -92,25 +71,33 @@ clearvars feapath_generic classpath_generic roibasepath_generic i
 for i = 1:length(classfiles)
     if ~rem(i,10), disp(['reading ' num2str(i) ' of ' num2dostr]), end
 
-     [classcountTB(i,:), classcount_above_optthreshTB(i,:), classcount_above_adhocthreshTB(i,:),...
-         classbiovolTB(i,:), classbiovol_above_optthreshTB(i,:), classbiovol_above_adhocthreshTB(i,:),...
-         ESDTB(i,:), ESD_above_optthreshTB(i,:), ESD_above_adhocthreshTB(i,:),...         
-          graylevelTB(i,:), graylevel_above_optthreshTB(i,:), graylevel_above_adhocthreshTB(i,:)]...
-         = summarize_TBclassBI(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
-
+    [classcountTB(i,:),classbiovolTB(i,:),classC_TB(i,:),classwidthTB(i,:),...
+    classcountTB_above_optthresh(i,:),classbiovolTB_above_optthresh(i,:),classC_TB_above_optthresh(i,:),classwidthTB_above_optthresh(i,:)]...
+    =count_class_carbon_byfile(classfiles{i},feafiles{i},micron_factor,summarydir_base);
+        
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtypeTB{i}=hdr.runtype;
     filecommentTB{i}=hdr.filecomment;    
-
+    
 end
 
 if ~exist([summarydir_base summaryfolder], 'dir')
     mkdir(resultpath)
 end
 
-save([summarydir_base summaryfolder 'summary_biovol_allTB'] ,'*TB')
+% yrrangestr = num2str(yrrange(1));
+% if length(yrrange) > 1
+%     yrrangestr = [yrrangestr '-' num2str(yrrange(end))];
+% end
+
+save([summarydir_base summaryfolder 'summary_biovol_allTB'] ,'runtypeTB','filecommentTB',...
+    'class2useTB', 'classC_TB*', 'classcountTB*', 'classbiovolTB*', 'classwidthTB*', 'ml_analyzedTB', 'mdateTB', 'filelistTB')
 
 disp('Summary file stored here:')
-disp([summarydir_base summaryfolder 'summary_biovol_allTB'])
+disp([summarydir_base summaryfolder 'summary_biovol_allTB_'])
+
+clear *files* classcount* classbiovol* classC* classwidth*
 
 end
+
+

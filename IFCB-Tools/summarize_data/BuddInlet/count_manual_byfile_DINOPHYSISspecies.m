@@ -1,7 +1,7 @@
-function [acuminata,fortii,norvegica,parva,odiosa,rotundata,acuta,unknownDinophysis]=manual_summarize_Dino_width_individual(manualfile,feafile,micron_factor)
-%function [large_PN,small_PN,Lcell1,Lcell2,Lcell3,Lcell4,Scell1,Scell2,Scell3,Scell4]=manual_summarize_Meso_width(manualfile,feafile,micron_factor)
+function [acuminata,fortii,norvegica,parva,odiosa,rotundata,acuta,unknownDinophysis]...
+    =count_manual_byfile_DINOPHYSISspecies(manualfile,feafile,micron_factor)
 %
-% Alexis D. Fischer, NOAA, May 2023
+% A.D. Fischer, April 2023
 %
 %% % % %Example inputs for testing
 % i=161
