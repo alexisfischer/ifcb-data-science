@@ -1,22 +1,22 @@
 function [ ] = summarize_cells_from_classifier(ifcbdir,classpath_generic,summarydir,yrrange,adhoc)
 %function [ ] = summarize_cells_from_classifier(ifcbdir, summarydir, yrrange)
 % Inputs automatic classified results and summarizes class results for a series of classifier output files (TreeBagger)
-% Alexis D. Fischer, University of California - Santa Cruz, June 2018
+% A.D. Fischer, June 2018
 %
 %% %test inputs
 % clear
-% summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\test\';
+% summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\test\';
 % classpath_generic = 'F:\LabData\Brian_PN_expt\class\classxxxx_v1\';
 % roibasepath_generic = 'F:\LabData\Brian_PN_expt\data\xxxx\'; %location of raw data
 % yrrange = 2023;
 % adhoc=0.50;
 
-clear
-summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\BuddInlet\class\';
-classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
-roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-yrrange = 2021:2023;
-adhoc=0.50;
+% clear
+% summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\class\';
+% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
+% roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
+% yrrange = 2021:2023;
+% adhoc=0.50;
 
 classfiles = [];
 filelistTB = [];

@@ -1,14 +1,14 @@
 function[classcountTB,classbiovolTB,classC_TB,classwidthTB,classcountTB_above_optthresh,...
     classbiovolTB_above_optthresh,classC_TB_above_optthresh,classwidthTB_above_optthresh]...
     =count_class_carbon_byfile(classfile,feafile,micron_factor,filepath)
-% Alexis D. Fischer, NOAA, September 2022
+% A.D. Fischer, September 2022
 
 % %Example inputs for testing
 %clearvars i j ii ind ind_diatom TB* t targets win roinum feastruct classwidth* classcount* classC* cell*
 % i=1523
 % classfile=classfiles{i};
 % feafile=feafiles{i};
-% filepath='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
+% filepath='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
 
 load(classfile)
 

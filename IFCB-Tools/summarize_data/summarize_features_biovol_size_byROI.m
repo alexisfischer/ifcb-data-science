@@ -2,12 +2,12 @@ function [ ] = summarize_features_biovol_size_byROI(out_dir,roibasepath,feapath_
 %function [ ] = summarize_features_biovol_size_byROI(out_dir,roibasepath,feapath_base,yr)
 %
 % Inputs Features files and outputs a summary file of biovolume and equivalent spherical diameter
-% Alexis D. Fischer, University of California - Santa Cruz, April 2018
+% A.D. Fischer, September 2022
 %
 %% Example inputs
 clear;
 yr='2021';
-out_dir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\BuddInlet\';
+out_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\';
 roibasepath = 'F:\BuddInlet\data\'; %Where you raw data is
 feapath_base = ['F:\BuddInlet\features\' yr '\']; %Put in your featurepath byyear
 

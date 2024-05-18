@@ -1,9 +1,10 @@
 %% plot data from IFCB fileparser
+% A.D. Fischer, February 2022
 addpath(genpath('~/Documents/MATLAB/ifcb-analysis/')); % add new data to search path
 addpath(genpath('~/Documents/MATLAB/bloom-baby-bloom/')); % add new data to search path
 
 %import ADC data
-filename="/Users/alexis.fischer/Documents/MATLAB/bloom-baby-bloom/NOAA/BuddInlet/Data/IFCBparserresult_labtestPMTsettingsDANY1.xlsx";
+filename="/Users/alexis.fischer/Documents/MATLAB/bloom-baby-bloom/BuddInlet/Data/IFCBparserresult_labtestPMTsettingsDANY1.xlsx";
 opts = spreadsheetImportOptions("NumVariables", 19);
 opts.Sheet = "ADC";
 opts.DataRange = "A2:S16879";

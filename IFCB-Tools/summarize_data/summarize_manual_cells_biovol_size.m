@@ -3,11 +3,11 @@ function [ ] = summarize_manual_cells_biovol_size(manualpath,out_dir,roibasepath
 %
 % Inputs manually classified results and outputs a summary file of counts,
 % total biovolume, and mean equivalent spherical diameter
-% Alexis D. Fischer, NOAA, August 2021
+% A.D. Fischer, August 2021
 %%
 %Example inputs
 % manualpath = 'D:\Shimada\manual\'; %Where you want the summary file to go
-% out_dir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\manual\';
+% out_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\';
 % roibasepath = 'D:\Shimada\data\'; %Where you raw data is
 % feapath_base = 'D:\Shimada\features\'; %Put in your featurepath byyear
 % micron_factor = 1/2.7; %USER PUT YOUR OWN microns per pixel conversion

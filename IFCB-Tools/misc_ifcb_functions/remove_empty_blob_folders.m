@@ -1,6 +1,6 @@
 function [] = remove_empty_blob_folders(blob_path)
 % deletes empty blob folders that occur when 'start_blob_batch_user_training' errors and result in other problems
-% Alexis D. Fischer, June 2019
+% A.D. Fischer, June 2019
 
 %%%% Example inputs
 %blob_path='F:\IFCB104\blobs\2019\';

@@ -2,10 +2,10 @@ function [] = summarize_class_cells_biovol_size(summarydir_base,summaryfolder,cl
 %function [] = summarize_class_cells_biovol_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
 %
 % Inputs automatic classified results and outputs a summary file of counts and biovolume
-% Alexis D. Fischer, University of California - Santa Cruz, June 2018
+% A.D. Fischer, September 2022
 %%
 % clear
-% summarydir_base='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
+% summarydir_base='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
 % summaryfolder='IFCB-Data\BuddInlet\class\';
 % classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
 % feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear

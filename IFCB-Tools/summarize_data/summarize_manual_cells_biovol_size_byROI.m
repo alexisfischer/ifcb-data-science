@@ -3,11 +3,11 @@ function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,out_dir,roiba
 %
 % Inputs manually classified results and outputs a summary file of counts, 
 % biovolume, and equivalent spherical diameter
-% Alexis D. Fischer, NOAA, August 2021
+% A.D. Fischer, August 2021
 %
 %Example inputs
 %  manualpath = 'D:\Shimada\manual\'; %USER
-%  out_dir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\manual\';
+%  out_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\';
 %  roibasepath = 'D:\Shimada\data\'; %USER
 %  feapath_base = 'D:\Shimada\features\2021\'; %USER
 %  yr='2021';

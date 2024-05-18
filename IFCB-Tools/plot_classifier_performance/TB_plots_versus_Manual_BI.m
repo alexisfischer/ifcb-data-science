@@ -1,9 +1,10 @@
 %% plot manual vs classifier results for Budd Inlet
+% A.D. Fischer, January 2023
 clear;
 class2do_string='Dinophysis'; ymax=20; 
 %class2do_string='Mesodinium'; ymax=20;
 
-filepath = '~/Documents/MATLAB/bloom-baby-bloom/';
+filepath = '~/Documents/MATLAB/ifcb-data-science/';
 outpath = [filepath 'IFCB-Data/BuddInlet/class/Figs/'];
 class_indices_path=[filepath 'IFCB-Tools/convert_index_class/class_indices.mat'];   
 addpath(genpath('~/Documents/MATLAB/ifcb-analysis/'));

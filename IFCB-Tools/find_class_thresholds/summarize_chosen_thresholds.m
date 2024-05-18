@@ -1,7 +1,8 @@
 function [slope,bin,chosen_threshold] = summarize_chosen_thresholds(classes,thresholdpath,classifiername)
 %summarize_chosenthresholds_forclassifier 
 %   determine classifier performance with new thresholds
-%
+% A.D. Fischer, February 2022
+
 % % % Example inputs
 % classes=list of classes;
 % thresholdpath ='~/Documents/MATLAB/ifcb-data-science/IFCB-Data/Shimada/threshold/';

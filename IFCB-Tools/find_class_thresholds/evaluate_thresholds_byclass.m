@@ -1,5 +1,5 @@
 %% This is the analysis that will help you evaluate the right threshold to use for your class files
-% Alexis Fischer, February 2023
+% A.D. Fischer, February 2023
 % When choosing a threshold, you want to look at the plots and determine which threshold 
 % gives you a slope closest to 1, an R^2 closest to 1, and a y-intercept closest to 0.
 clf; clear; close all;

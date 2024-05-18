@@ -3,7 +3,7 @@ clear;
 classifiername='CCS_v16';
 class2do_full='Pseudo-nitzschia_large_1cell,Pseudo-nitzschia_small_1cell';
 
-filepath = '~/Documents/MATLAB/bloom-baby-bloom/';
+filepath = '~/Documents/MATLAB/ifcb-data-science/';
 outpath = [filepath 'IFCB-Data/Shimada/threshold/' classifiername '/Figs/'];
 class_indices_path=[filepath 'IFCB-Tools/convert_index_class/class_indices.mat'];   
 addpath(genpath('~/Documents/MATLAB/ifcb-analysis/'));

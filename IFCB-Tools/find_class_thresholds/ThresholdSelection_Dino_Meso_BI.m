@@ -1,4 +1,6 @@
-%% plot manual vs classifier results for Budd Inlet
+%% Select threshold scores for Dinophysis and Mesodinium in Budd Inlet
+% A.D. Fischer, February 2024
+
 clear;
 
 class2do_string='Dinophysis'; ymax=20;

@@ -1,3 +1,4 @@
+% A.D. Fischer, January 2023
 clear;
 Mac=0;
 %name='CCS_NOAA-OSU_v7';
@@ -5,12 +6,12 @@ Mac=0;
 name='BI_NOAA_v15';
 
 if Mac
-    basepath = '~/Documents/MATLAB/bloom-baby-bloom/';    
+    basepath = '~/Documents/MATLAB/ifcb-data-science/';    
     filepath = [basepath 'IFCB-Data/BuddInlet/class/'];
     classidx=[basepath 'IFCB-Tools/convert_index_class/class_indices.mat'];
     figpath = [filepath 'Figs/'];
 else
-    basepath='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
+    basepath='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
     filepath = [basepath 'IFCB-Data\BuddInlet\class\'];
     classidx=[basepath 'IFCB-Tools\convert_index_class\class_indices.mat'];    
     figpath = [filepath 'Figs\'];    

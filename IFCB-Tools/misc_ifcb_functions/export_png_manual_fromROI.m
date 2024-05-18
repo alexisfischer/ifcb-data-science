@@ -1,9 +1,10 @@
+% A.D. Fischer, May 2022
 %USER SET PATHS
 %where are your manual classification results? same resultpath as for manual_classify
 resultpath = 'F:\BuddInlet\manual\'; % manual annotation file location
 outputpath = 'F:\general\ROI_images\'; %USER where to write out pngs
 roibasepath = 'F:\BuddInlet\data\xxxx\'; %USER where are your ROIs, put xxxx to mark loaction so of year digits
-%urlbase = 'http://ifcb-data.whoi.edu/mvco/'; %USER where is your dashboard\web server
+%urlbase = 'http://ifcb-data.whoi.edu/budd-inlet/'; %USER where is your dashboard\web server
 
 resultfilelist = dir([resultpath 'D*.mat']);
 resultfilelist = char(resultfilelist.name);

@@ -1,6 +1,7 @@
 %% map underway environmental data along CCS
+% A.D. Fischer, February 2022
 clear;
-basepath = '~/Documents/MATLAB/bloom-baby-bloom/';
+basepath = '~/Documents/MATLAB/ifcb-data-science/';
 addpath(genpath('~/Documents/MATLAB/ifcb-analysis/')); % add new data to search path
 addpath(genpath(basepath)); % add new data to search path
 classidx=[basepath 'IFCB-Tools/convert_index_class/class_indices.mat'];

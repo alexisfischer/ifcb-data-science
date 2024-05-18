@@ -5,7 +5,7 @@ function [ ] = classifier_oob_analysis_og( classifiername,outpath,adhocthresh)
 % input classifier file name with full path
 % expects output from make_TreeBaggerClassifier*.m
 % test classifier on Hake survey dataset
-%   Alexis D. Fischer, NOAA NWFSC, September 2021
+% A.D. Fischer September 2021
 %
 %% Example Inputs
 % clear

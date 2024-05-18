@@ -1,4 +1,5 @@
 %% plot manual vs classifier results for Shimada
+% A.D. Fischer, January 2023
 clear;
 classifiername='CCS_NOAA-OSU_v7';
 class2do_full='Pseudo-nitzschia_large_1cell,Pseudo-nitzschia_small_1cell';
@@ -6,7 +7,7 @@ type='all';
 %type='adhoc';
 %type='opt';
 
-filepath = '~/Documents/MATLAB/bloom-baby-bloom/';
+filepath = '~/Documents/MATLAB/ifcb-data-science/';
 outpath = [filepath 'IFCB-Data/Shimada/threshold/' classifiername '/Figs/'];
 class_indices_path=[filepath 'IFCB-Tools/convert_index_class/class_indices.mat'];   
 addpath(genpath('~/Documents/MATLAB/ifcb-analysis/'));

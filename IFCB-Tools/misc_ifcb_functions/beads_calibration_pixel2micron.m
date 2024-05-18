@@ -1,3 +1,5 @@
+% A.D. Fischer, March 2023
+
 %IFCB777
 % http://localhost:8000/image?image=00340&dataset=Shimada&bin=D20190722T130522_IFCB777
 % http://localhost:8000/image?image=00491&dataset=Shimada&bin=D20190724T032751_IFCB777

@@ -1,5 +1,5 @@
 %% Threshold tuning
-% Alexis Fischer, NOAA Feb 2023
+% A.D. Fischer, February 2023
 clear;
 ifcbdir='D:\Shimada\'; 
 summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\';

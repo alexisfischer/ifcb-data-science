@@ -2,7 +2,7 @@ function [classcount, classcount_above_optthresh, classcount_above_adhocthresh,.
     classbiovol, classbiovol_above_optthresh, classbiovol_above_adhocthresh,...
     ESD, ESD_above_optthresh, ESD_above_adhocthresh] = ...
     count_class_byfile(classfile, feafile, micron_factor, adhocthresh)
-% Alexis D. Fischer, NOAA, January 2024
+% A.D. Fischer, January 2024
 
 %% uncomment for troubleshooting
 % i=1;
