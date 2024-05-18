@@ -2,10 +2,11 @@ function [class2skip] = find_class2skip(class2useName,TopClass)
 %find_class2skip Finds class2skip from an input of the classes that you
 %want in your training set
 %   can use before compile_train_features_PNW
+%  A.D Fischer, September 2021
 
 %%
 % % Example inputs
-% TopClassName = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\manual\TopClasses';
+% TopClassName = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\TopClasses';
 % class2useName = 'D:\general\config\class2use_12'; %classlist to subtract "class" from
 
 load([class2useName '.mat'],'class2use');

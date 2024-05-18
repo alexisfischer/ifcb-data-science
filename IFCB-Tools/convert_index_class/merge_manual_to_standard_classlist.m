@@ -13,7 +13,7 @@ OLDpath = 'D:\BuddInlet\manualEmilie\Discretsamples\';
 
 addpath(genpath(NEWpath));
 addpath(genpath(OLDpath));
-addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\'));
+addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\'));
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
 
 load([class2useName '.mat'], 'class2use');

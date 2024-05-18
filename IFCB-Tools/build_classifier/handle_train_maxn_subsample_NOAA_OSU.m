@@ -6,7 +6,7 @@ function [ n, class_all, varargin ] = handle_train_maxn_subsample_NOAA_OSU( clas
 % compile_train_features. If number of images exceed the USER defined maxn, 
 % this randomly removes excess images from the training set so that images 
 % are balanced across NWFSC, UCSC, and OSU. 
-%   Alexis D. Fischer, NOAA NWFSC, June 2022
+%  A.D Fischer, June 2022
 
 % %% Example inputs for testing
 % varargin{1}=fea_all;

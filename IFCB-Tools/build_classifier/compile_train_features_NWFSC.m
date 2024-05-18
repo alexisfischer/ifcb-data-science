@@ -4,7 +4,7 @@ function [  ] = compile_train_features_NWFSC( manualpath , feapath_base, outpath
 % For example:
 %compile_train_features_user_training('C:\work\IFCB\user_training_test_data\manual\', 'C:\work\IFCB\user_training_test_data\features\', 100, 30, {'other'}, {'misc_nano' 'Karenia'})
 %IFCB classifier production: get training features from pre-computed bin feature files
-%   Alexis D. Fischer, NOAA NWFSC, September 2021
+%  A.D Fischer, September 2021
 
 %% %Example inputs: 
 

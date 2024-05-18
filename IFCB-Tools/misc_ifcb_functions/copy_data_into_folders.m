@@ -1,6 +1,6 @@
 function [] = copy_data_into_folders(in_dir_base, out_dir_data_base)
 % copies raw IFCB data into Synology folder
-% Alexis Fischer, April 2023
+% A.D. Fischer, March 2024
 
 %Example inputs
 %in_dir_base='C:\SFTP-BuddInlet\2024\'; % example input

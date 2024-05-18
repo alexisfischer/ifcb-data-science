@@ -1,8 +1,9 @@
 %% Training and Making a Seascape classifier
-%   Alexis D. Fischer, NOAA NWFSC, Feb 2023
+%  A.D Fischer, February 2023
+%
 clear;
 filepath='C:\Users\ifcbuser\Documents\';
-summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\';
+summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
 addpath(genpath(filepath));
 addpath(genpath('D:\general\classifier\'));
 
@@ -23,7 +24,7 @@ class2skip(end+1)={'nanoplankton'};
 class2skip(end+1)={'cryptophyta'};
 
 %% Step 3: compile features for the training set
-ssdir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\NOAA\SeascapesProject\Data\SeascapeSummary_NOAA-OSU-UCSC';
+ssdir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\NOAA\SeascapesProject\Data\SeascapeSummary_NOAA-OSU-UCSC';
 manualpath = 'D:\general\classifier\manual_merged_ungrouped\'; % manual annotation file location
 feapath_base = 'D:\general\classifier\features_merged_ungrouped\'; %feature file location, assumes \yyyy\ organization
 outpath = 'D:\general\classifier\summary\'; % location to save training set
@@ -49,5 +50,5 @@ nTrees = 100; %USER how many trees in your forest; choose enough to reach asympt
 make_TreeBaggerClassifier(result_path, classifiername, nTrees)
 
 determine_classifier_performance([result_path 'Trees_' classifiername],[summarydir 'IFCB-Data\Shimada\class\']);
-%determine_classifier_performance([result_path 'Trees_' classifiername],'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\class\');
+%determine_classifier_performance([result_path 'Trees_' classifiername],'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\class\');
 

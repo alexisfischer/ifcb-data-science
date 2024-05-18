@@ -1,5 +1,5 @@
 %% Extacting Blobs and Features and Applying a Classifier
-%  Alexis D. Fischer, NOAA NWFSC, August 2021
+%  A.D Fischer, August 2021
 clear;
 
 %%%% modify according to dataset
@@ -8,9 +8,9 @@ ifcbdir='F:\BuddInlet\';
 %ifcbdir='F:\LabData\'; 
 %ifcbdir='F:\general\classifier\'; 
 
-%summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\';
-summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\BuddInlet\';
-%summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\UCSC\SCW\';
+%summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\';
+summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\';
+%summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\UCSC\SCW\';
 %summarydir=[ifcbdir 'summary\'];
 
 yr='2024';
@@ -18,7 +18,7 @@ yr='2024';
 addpath(genpath(summarydir));
 addpath(genpath(ifcbdir));
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
-addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\'));
+addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\'));
 
 classifier='F:\general\classifier\summary\Trees_BI_NOAA_v15';
 %classifier='F:\general\classifier\summary\Trees_CCS_NOAA-OSU_v7';
@@ -37,10 +37,9 @@ start_classify_batch_user_training(classifier,[ifcbdir 'features\' yr '\'],[ifcb
 
 
 %% adjust classlists
-start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\general\classifier\manual_merged_NOAA\')
-start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\BuddInlet\manual\')
-start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\LabData\manual\')
-start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\Shimada\manual\')
-start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\BuddInlet\manual_DiscreteSamples\')
-start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\BuddInlet\manual_AltSamples\')
-
+% start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\general\classifier\manual_merged_NOAA\')
+% start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\BuddInlet\manual\')
+% start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\LabData\manual\')
+% start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\Shimada\manual\')
+% start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\BuddInlet\manual_DiscreteSamples\')
+% start_mc_adjust_classes_user_training('F:\general\config\class2use_17','F:\BuddInlet\manual_AltSamples\')

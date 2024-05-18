@@ -1,7 +1,7 @@
 function [ n, class_all, class2use, varargin ] = handle_train_class2group_NWFSC( class2use, class2group, maxn, n, class_all, varargin )
 % function [ n, class_all, class2use, varargin ] = handle_train_class2group( class2use, class2group, maxn, n, class_all, varargin )
 % ifcb-analysis; function called by compile_train_features*; subsample a training set to group specified classes
-% Heidi M. Sosik, Woods Hole Oceanographic Institution, April 2017
+%  A.D Fischer, September 2021
 
 for classcount = 1:length(class2group{1})  
     num2group = length(class2group{1}{classcount});

@@ -3,7 +3,8 @@ function [ ] = make_TreeBaggerClassifier( result_path, classifiername, nTrees)
 %For example:
 %   make_TreeBaggerClassifier_user_training( 'C:\work\IFCB\user_training_test_data\manual\summary\', 'UserExample_Train_06Aug2015', 'UserExample_Trees_', 100)
 % IFCB classification: create Random Forest classifier from training data
-% Heidi M. Sosik, Woods Hole Oceanographic Institution, August 2015
+% modified HSosik code
+%  A.D Fischer, December 2022
 %
 %run compile_train_features_user_training.m first to store input results in train_filename
 % Example inputs:

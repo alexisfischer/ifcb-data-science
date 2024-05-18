@@ -27,7 +27,7 @@
 %%
 clear;
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
-addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\'));
+addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\'));
 addpath(genpath('D:\Shimada\'));
 
 % bead_dim_um=100; %um

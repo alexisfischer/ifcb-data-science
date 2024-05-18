@@ -1,8 +1,9 @@
 %% Training and Making a classifier
-%   Alexis D. Fischer, NOAA NWFSC, December 2022
+%  A.D Fischer, December 2022
+%
 clear;
 filepath='C:\Users\ifcbuser\Documents\GitHub\';
-summarydir='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\BuddInlet\';
+summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\';
 addpath(genpath(filepath));
 class2useName ='F:\general\config\class2use_17';
 
@@ -24,7 +25,7 @@ clearvars  mergedpath UCSCpath SHMDApath LABpath BUDDpath OSUpath;
 
 % Step 2: select classes of interest and find class2skip
 % % Regional CCS classifier
-% load([filepath 'bloom-baby-bloom\NOAA\Shimada\Data\seascape_topclasses'],'SS');
+% load([filepath 'ifcb-data-science\NOAA\Shimada\Data\seascape_topclasses'],'SS');
 % SS(end).topclasses(end+1)={'Navicula'};
 % 
 % [class2skip] = find_class2skip(class2useName,SS(end).topclasses);
@@ -39,7 +40,7 @@ clearvars  mergedpath UCSCpath SHMDApath LABpath BUDDpath OSUpath;
 % class2skip(end+1)={'Gonyaulax'};
 
 %%%% Budd Inlet
-load([filepath 'bloom-baby-bloom\IFCB-Data\BuddInlet\manual\TopClasses'],'topclasses');
+load([filepath 'ifcb-data-science\IFCB-Data\BuddInlet\manual\TopClasses'],'topclasses');
 topclasses(end+1)={'Strombidium'};
 
 [class2skip] = find_class2skip(class2useName,topclasses);

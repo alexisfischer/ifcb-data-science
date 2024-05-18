@@ -7,7 +7,7 @@ function [ ia, class_label ] = get_class_ind( class2use, target, file)
 % class2use = {'Ditylum';'Entomoneis';'Eucampia';'Flagilaria';'Guinardia';'Gyrosigma';...
 %     'Helicotheca';'Hemiaulus';'Lauderia';'Leptocylindrus';'Licmophora';...
 %     'Lioloma';'Lithodesmium';'Melosira';'Nitzschia';'Odontella'};
-%file = '~/Documents/MATLAB/bloom-baby-bloom/IFCB-Tools/convert_index_class/class_indices.mat';
+%file = '~/Documents/MATLAB/ifcb-data-science/IFCB-Tools/convert_index_class/class_indices.mat';
 %target= 'all';%'diatom'; %'all' 'dinoflagellate' 'unclassified' 'otherphyto' 'nonliving' 'nanoplankton' 'zooplankton' 'larvae'
 
 load(file,'class','class_proper','category');

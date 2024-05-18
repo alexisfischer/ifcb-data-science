@@ -4,7 +4,7 @@ function [  ] = compile_train_features_SS(manualpath,feapath_base,outpath,maxn,m
 % For example:
 %compile_train_features_user_training('C:\work\IFCB\user_training_test_data\manual\', 'C:\work\IFCB\user_training_test_data\features\', 100, 30, {'other'}, {'misc_nano' 'Karenia'})
 %IFCB classifier production: get training features from pre-computed bin feature files
-%   Alexis D. Fischer, NOAA NWFSC, September 2021
+%  A.D Fischer, September 2021
 
 %% %Example inputs: 
 % clear
@@ -24,7 +24,7 @@ function [  ] = compile_train_features_SS(manualpath,feapath_base,outpath,maxn,m
 %         {'Gymnodinium' 'Heterosigma' 'Scrippsiella'}};
 % varargin{3}='NOAA'; %which group of annotations that annotations should be selected from
 % varargin{4}=19; %which seascape that annotations should be selected from
-% varargin{5}='C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\NOAA\SeascapesProject\Data\SeascapeSummary_NOAA-OSU-UCSC';
+% varargin{5}='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\NOAA\SeascapesProject\Data\SeascapeSummary_NOAA-OSU-UCSC';
 % classifiername=['CCS_ss' num2str(varargin{4}) '_v1']; 
 
 % %other examples

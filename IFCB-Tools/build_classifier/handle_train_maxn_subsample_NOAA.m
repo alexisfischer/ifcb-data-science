@@ -2,11 +2,11 @@ function [ n, class_all, varargin ] = handle_train_maxn_subsample_NOAA( class2us
 % function [ n, class_all, varargin ] = handle_train_maxn_subsample_NOAA( class2use, maxn, class_all, varargin )
 % ifcb-analysis; function called by compile_train_features*; 
 %
-% This is a function that replaces �handle_train_maxn� within 
+% This is a function that replaces handle_train_maxn within 
 % compile_train_features. If number of images exceed the USER defined maxn, 
 % this randomly removes excess images from the training set so that 
 % BI images are preferentially selected over NCC images
-%   Alexis D. Fischer, NOAA NWFSC, June 2022
+%  A.D Fischer, June 2022
 
 % %% Example inputs for testing
 % varargin{1}=fea_all;
