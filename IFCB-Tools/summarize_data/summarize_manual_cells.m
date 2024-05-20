@@ -1,6 +1,6 @@
 function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
 %function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
-% summarizes class results for a series of manual annotation files (as saved by startMC)
+% summarizes results for a series of manual annotation files (as saved by startMC)
 % A.D. Fischer, September 2022
 %%
 %Example inputs:
@@ -8,12 +8,6 @@ function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
 %  manualpath = 'D:\LabData\manual\'; %manual file location
 %  datapath = 'D:\LabData\data\'; %where to access data (hdr files)
 %  summary_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\LabData\manual\';
-
-addpath(genpath(summary_dir));
-addpath(genpath(datapath));
-addpath(genpath(manualpath));
-addpath(genpath(manualpath));
-addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
 
 %make sure input paths end with filesep
 if ~isequal(manualpath(end), filesep)

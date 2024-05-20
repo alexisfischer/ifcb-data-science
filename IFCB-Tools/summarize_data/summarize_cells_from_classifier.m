@@ -1,16 +1,9 @@
-function [ ] = summarize_cells_from_classifier(ifcbdir,classpath_generic,summarydir,yrrange,adhoc)
-%function [ ] = summarize_cells_from_classifier(ifcbdir, summarydir, yrrange)
+function [ ] = summarize_cells_from_classifier(classpath_generic,summarydir,yrrange,adhoc)
+%function [ ] = summarize_cells_from_classifier(classpath_generic,summarydir,yrrange,adhoc)
 % Inputs automatic classified results and summarizes class results for a series of classifier output files (TreeBagger)
 % A.D. Fischer, June 2018
 %
-%% %test inputs
-% clear
-% summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\test\';
-% classpath_generic = 'F:\LabData\Brian_PN_expt\class\classxxxx_v1\';
-% roibasepath_generic = 'F:\LabData\Brian_PN_expt\data\xxxx\'; %location of raw data
-% yrrange = 2023;
-% adhoc=0.50;
-
+%% Example inputs
 % clear
 % summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\class\';
 % classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';

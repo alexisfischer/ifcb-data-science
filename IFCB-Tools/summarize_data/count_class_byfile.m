@@ -2,14 +2,17 @@ function [classcount, classcount_above_optthresh, classcount_above_adhocthresh,.
     classbiovol, classbiovol_above_optthresh, classbiovol_above_adhocthresh,...
     ESD, ESD_above_optthresh, ESD_above_adhocthresh] = ...
     count_class_byfile(classfile, feafile, micron_factor, adhocthresh)
-% A.D. Fischer, January 2024
+% loads class and feature files corresponding to one sample and sums up 
+% cells, biovolume, and size for three different classifier outputs (winner 
+% takes all, opt score threshold, and adhoc threshold)
+%
+% A.D. Fischer, September 2022
 
 %% uncomment for troubleshooting
 % i=1;
 % clearvars *TB
 % classfile=classfiles{i};
 % feafile=feafiles{i};
-%%
 
 load(classfile,'TBclass','TBclass_above_threshold','TBscores','class2useTB');
 %disp(classfile)

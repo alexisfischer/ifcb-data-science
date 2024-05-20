@@ -2,16 +2,20 @@ function [PNcount_above_optthresh,PNcount,...
     opt_cell1,opt_cell2,opt_cell3,opt_cell4,...
     wta_cell1,wta_cell2,wta_cell3,wta_cell4]=...
     count_class_byfile_PNchains(classfile,feafile,micron_factor)
+% loads class and feature files corresponding to one sample and sums up 
+% Pseudo-nitzschia cells by chain length (1,2,3,4) for two different 
+% classifier outputs (winner takes all, opt score threshold)
 %
 % A.D. Fischer, April 2023
-%%
-% % % %Example inputs for testing
+
+%% uncomment for troubleshooting
 % i=1; %122
 % classfile=classfiles{i}
 % feafile=feafiles{i};
 
 load(classfile,'roinum','TBclass','TBclass_above_threshold')
 
+% %applies different pixel to micron conversion for different IFCBs
 % if contains(char(classfile),'IFCB777') 
 %     micron_factor=1/3.7695;
 % elseif contains(char(classfile),'IFCB117') 

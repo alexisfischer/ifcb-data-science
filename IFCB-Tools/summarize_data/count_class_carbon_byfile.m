@@ -1,9 +1,13 @@
 function[classcountTB,classbiovolTB,classC_TB,classwidthTB,classcountTB_above_optthresh,...
     classbiovolTB_above_optthresh,classC_TB_above_optthresh,classwidthTB_above_optthresh]...
     =count_class_carbon_byfile(classfile,feafile,micron_factor,filepath)
+% loads class and feature files corresponding to one sample and sums up 
+% cells, biovolume, carbon, and size for two different classifier outputs 
+% (winner takes all and opt score threshold)
+%
 % A.D. Fischer, September 2022
-
-% %Example inputs for testing
+%
+%% uncomment for troubleshooting
 %clearvars i j ii ind ind_diatom TB* t targets win roinum feastruct classwidth* classcount* classC* cell*
 % i=1523
 % classfile=classfiles{i};
@@ -12,6 +16,7 @@ function[classcountTB,classbiovolTB,classC_TB,classwidthTB,classcountTB_above_op
 
 load(classfile)
 
+% % applies different pixel to micron conversion for different ifcbs
 % if contains(char(classfile),'IFCB777') 
 %     micron_factor=1/3.7695;
 % elseif contains(char(classfile),'IFCB117') 
