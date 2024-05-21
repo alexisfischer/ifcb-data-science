@@ -58,7 +58,7 @@ clearvars classpath_generic roibasepath_generic i
 for i = 1:length(classfiles)
     if ~rem(i,10), disp(['reading ' num2str(i) ' of ' num2dostr]), end
     [classcountTB(i,:),classcount_above_optthreshTB(i,:),classcount_above_adhocthreshTB(i,:)]...
-        =summarize_TBclass(classfiles{i},adhocthresh);    
+        =count_class_cells_byfile(classfiles{i},adhocthresh);    
 
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtypeTB{i}=hdr.runtype;

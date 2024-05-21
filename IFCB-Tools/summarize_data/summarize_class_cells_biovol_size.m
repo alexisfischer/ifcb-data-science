@@ -5,15 +5,15 @@ function [] = summarize_class_cells_biovol_size(summarydir,classpath_generic,fea
 % classifier outputs (winner takes all, opt score threshold, adhoc threshold)
 %
 % A.D. Fischer, September 2022
-%
-% %Example inputs
-% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\class\'; %where you want the summary file to go
-% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\'; %location of classified data
-% feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
-% roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-% yrrange = 2021:2023; %years that you want summarized
-% micron_factor=1/3.8; %pixel to micron conversion
-% adhoc = 0.50; %adhoc score threshold of interest
+%%
+%Example inputs
+summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\class\'; %where you want the summary file to go
+classpath_generic = 'F:\Shimada\class\CCS_NOAA-OSU_v7\classxxxx_v1\'; %location of classified data
+feapath_generic = 'F:\Shimada\features\xxxx\'; %Put in your featurepath byyear
+roibasepath_generic = 'F:\Shimada\data\xxxx\'; %location of raw data
+yrrange = 2023; %years that you want summarized
+micron_factor=1/3.8; %pixel to micron conversion
+adhoc = 0.50; %adhoc score threshold of interest
 
 classfiles = [];
 filelistTB = [];
@@ -77,7 +77,7 @@ for i = 1:length(classfiles)
      [classcountTB(i,:), classcount_above_optthreshTB(i,:), classcount_above_adhocthreshTB(i,:),...
          classbiovolTB(i,:), classbiovol_above_optthreshTB(i,:), classbiovol_above_adhocthreshTB(i,:),...
          ESDTB(i,:), ESD_above_optthreshTB(i,:), ESD_above_adhocthreshTB(i,:)]...
-         = count_class_byfile(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
+         = count_class_cells_biovol_size_byfile(classfiles{i}, feafiles{i}, micron_factor, adhocthresh); 
 
     hdr=IFCBxxx_readhdr2(hdrname{i});
     runtypeTB{i}=hdr.runtype;
