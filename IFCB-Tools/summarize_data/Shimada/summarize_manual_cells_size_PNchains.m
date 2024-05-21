@@ -3,6 +3,11 @@ function [ ] = summarize_manual_cells_size_PNchains(summarydir,feapath_generic,r
 % Inputs classifier and features files and outputs a summary file of
 % minor axis length for all Pseudo-nitzschia chain lengths
 %
+
+% Inputs classified data and feature files and outputs a summary file of 
+% cell counts for each class for 3 different different classifier outputs (winner takes all, opt 
+% score threshold, adhoc threshold)
+
 % Alexis D. Fischer, NOAA NWFSC, April 2023
 %
 % %% Example inputs

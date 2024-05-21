@@ -1,17 +1,17 @@
-function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,out_dir,roibasepath,feapath_base,yr,micron_factor)
-%function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,out_dir,roibasepath,feapath_base,yr,micron_factor)
-%
+function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,summarydir,roibasepath,feapath_base,yr,micron_factor)
+%function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,summarydir,roibasepath,feapath_base,yr,micron_factor)
 % Inputs manually classified results and outputs a summary file of counts, 
-% biovolume, and equivalent spherical diameter
+% biovolume, and equivalent spherical diameter for each roi
+%
 % A.D. Fischer, August 2021
 %
-%Example inputs
-%  manualpath = 'D:\Shimada\manual\'; %USER
-%  out_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\';
-%  roibasepath = 'D:\Shimada\data\'; %USER
-%  feapath_base = 'D:\Shimada\features\2021\'; %USER
-%  yr='2021';
-%  micron_factor = 1/3.4; %microns per pixel conversion
+% %Example inputs
+%  yr='2021'; %year of interest
+%  manualpath = 'F:\Shimada\manual\'; %location of manual data
+%  summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\'; %where you want the summary file to go
+%  roibasepath = 'F:\Shimada\data\'; %location of raw data 
+%  feapath_base = 'F:\Shimada\features\2021\'; %put in your featurepath by year
+%  micron_factor = 1/3.8; %microns per pixel conversion
 
 % determine where MC and feature files intersect
 fefilelist = dir([feapath_base 'D*.csv']);
@@ -82,9 +82,9 @@ end
 %%
 note1 = 'Biovolume: cubed micrometers';
 note2= 'Equivalent spherical diameter: micrometers';
-save([out_dir 'class_eqdiam_biovol_manual_' yr], 'BiEq', 'class2use_manual', 'note1', 'note2')
+save([summarydir 'class_eqdiam_biovol_manual_' yr], 'BiEq', 'class2use_manual', 'note1', 'note2')
 
 disp('Summary file stored here:')
-disp([out_dir 'class_eqdiam_biovol_manual_' yr])
+disp([summarydir 'class_eqdiam_biovol_manual_' yr])
 
 end

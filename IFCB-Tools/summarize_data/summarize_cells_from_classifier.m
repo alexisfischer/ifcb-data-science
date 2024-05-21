@@ -1,15 +1,17 @@
-function [ ] = summarize_cells_from_classifier(classpath_generic,summarydir,yrrange,adhoc)
-%function [ ] = summarize_cells_from_classifier(classpath_generic,summarydir,yrrange,adhoc)
-% Inputs automatic classified results and summarizes class results for a series of classifier output files (TreeBagger)
-% A.D. Fischer, June 2018
+function [ ] = summarize_cells_from_classifier(roibasepath_generic,classpath_generic,summarydir,yrrange,adhoc)
+%function [ ] = summarize_cells_from_classifier(roibasepath_generic,classpath_generic,summarydir,yrrange,adhoc)
+% Inputs classified data and outputs a summary file of cell counts for each 
+% class for 3 different different classifier outputs (winner takes all, opt 
+% score threshold, adhoc threshold)
 %
-%% Example inputs
-% clear
-% summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\class\';
-% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
+% A.D. Fischer, June 2021
+%
+% %Example inputs
 % roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-% yrrange = 2021:2023;
-% adhoc=0.50;
+% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\'; %location of classified data
+% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\class\'; %where you want the summary file to go
+% yrrange = 2021:2023; %years that you want summarized
+% adhoc = 0.50; %adhoc score threshold of interest
 
 classfiles = [];
 filelistTB = [];
@@ -18,11 +20,6 @@ for i = 1:length(yrrange)
     yr = yrrange(i);  
     classpath = regexprep(classpath_generic, 'xxxx', num2str(yr));
     roibasepath = regexprep(roibasepath_generic, 'xxxx', num2str(yr));
-
-    addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
-    addpath(genpath(summarydir));    
-    addpath(genpath(classpath));
-    addpath(genpath(roibasepath));
 
     temp = dir([classpath 'D*.mat']);
     if ~isempty(temp) 
@@ -51,8 +48,7 @@ classcount_above_optthreshTB = classcountTB;
 classcount_above_adhocthreshTB = classcountTB;
 
 adhocthresh = adhoc*ones(size(class2useTB)); %assign all classes the same adhoc decision threshold between 0 and 1
-adhocthresh(contains(class2useTB,'Dinophysis')) = 0.7; %reassign value for specific class
-adhocthresh(contains(class2useTB,'Mesodinium')) = 0.5; %reassign value for specific class
+%adhocthresh(contains(class2useTB,'Dinophysis')) = 0.7; %reassign value for specific class
 
 runtypeTB=filelistTB;
 filecommentTB=filelistTB;
@@ -81,73 +77,3 @@ end
 save([summarydir 'summary_cells_allTB_' yrrangestr],'*TB');
 disp('Summary cell count file stored here:')
 disp([summarydir 'summary_cells_allTB_' yrrangestr])
-
-%%
-% %% not using for now
-% 
-% mdate = IFCB_file2date(filelist);
-% 
-% %presumes all class files have same class2useTB list
-% temp = load(classfiles{1}, 'class2useTB');
-% class2use = temp.class2useTB; clear temp classfilestr
-% classcount = NaN(length(classfiles),length(class2use));
-% classcount_above_optthresh = classcount;
-% classcount_above_adhocthresh = classcount;
-% num2dostr = num2str(length(classfiles));
-% ml_analyzed = NaN(size(classfiles));
-% runtype=filelist;
-% filecomment=filelist;
-% adhocthresh = adhoc*ones(size(class2use)); %assign all classes the same adhoc decision threshold between 0 and 1
-% adhocthresh(contains(class2use,'Dinophysis')) = 0.55; %reassign value for specific class
-% adhocthresh(contains(class2use,'Mesodinium')) = 0.5; %reassign value for specific class
-% %%
-% for i = 1:length(classfiles)
-%     if ~rem(i,10), disp(['reading ' num2str(i) ' of ' num2dostr]), end
-%     ml_analyzed(i) = IFCB_volume_analyzed(hdrname{i});
-%     [classcount(i,:),classcount_above_optthresh(i,:),classcount_above_adhocthresh(i,:)]...
-%         =summarize_TBclass(classfiles{i},adhocthresh);
-% 
-%     hdr=IFCBxxx_readhdr2(hdrname{i});
-%     runtype{i}=hdr.runtype;
-%     filecomment{i}=hdr.filecomment;  
-% end
-% 
-% if ~exist(summarydir, 'dir')
-%     mkdir(summarydir)
-% end
-% 
-% ml_analyzedTB = ml_analyzed;
-% mdateTB = mdate;
-% filelistTB = filelist;
-% class2useTB = class2use;
-% classcountTB = classcount;
-% classcountTB_above_optthresh = classcount_above_optthresh;
-% 
-% yrrangestr = num2str(yrrange(1));
-% if length(yrrange) > 1
-%     yrrangestr = [yrrangestr '_' num2str(yrrange(end))];
-% end
-% 
-% clear mdate filelist class2use classcount classcount_above_optthresh i yrrange yrcount yr classfiles in_dir num2dostr
-% 
-% %if exist('adhocthresh', 'var')
-%     classcountTB_above_adhocthresh = classcount_above_adhocthresh;
-%     save([summarydir 'summary_cells_allTB_' yrrangestr] , 'class2useTB', 'classcountTB', 'classcountTB_above_optthresh', 'classcountTB_above_adhocthresh', 'ml_analyzedTB', 'mdateTB', 'filelistTB', 'adhocthresh', 'classpath_generic')
-% % else
-% %     save([summarydir 'summary_cells_allTB'] , 'class2useTB', 'classcountTB', 'classcountTB_above_optthresh', 'ml_analyzedTB', 'mdateTB', 'filelistTB', 'classpath_generic')
-% % end
-% 
-% disp('Summary cell count file stored here:')
-% disp([summarydir 'summary_cells_allTB_' yrrangestr])
-% 
-% return
-% %example plotting code for all of the data (load summary file first)
-% figure
-% classind = 2;
-% plot(mdateTB, classcountTB(:,classind)./ml_analyzedTB, '.-')
-% hold on
-% plot(mdateTB, classcountTB_above_optthresh(:,classind)./ml_analyzedTB, 'g.-')
-% plot(mdateTB, classcountTB_above_adhocthresh(:,classind)./ml_analyzedTB, 'r.-')
-% legend('All wins', 'Wins above optimal threshold', 'Wins above adhoc threshold')
-% ylabel([class2useTB{classind} ', mL^{ -1}'])
-% datetick('x')

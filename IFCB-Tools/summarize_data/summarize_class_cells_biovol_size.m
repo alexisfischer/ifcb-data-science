@@ -1,17 +1,19 @@
-function [] = summarize_class_cells_biovol_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
-%function [] = summarize_class_cells_biovol_size(summarydir_base,summaryfolder,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+function [] = summarize_class_cells_biovol_size(summarydir,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+%function [] = summarize_class_cells_biovol_size(summarydir,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+% Inputs class and feature files and outputs a summary file of cell counts,
+% biovolume, and equivalent spherical diameter for 3 different
+% classifier outputs (winner takes all, opt score threshold, adhoc threshold)
 %
-% Inputs automatic classified results and outputs a summary file of counts and biovolume
 % A.D. Fischer, September 2022
-%%
-% clear
-% summarydir_base='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
-% summaryfolder='IFCB-Data\BuddInlet\class\';
-% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\';
+%
+% %Example inputs
+% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\class\'; %where you want the summary file to go
+% classpath_generic = 'F:\BuddInlet\class\v15\classxxxx_v1\'; %location of classified data
 % feapath_generic = 'F:\BuddInlet\features\xxxx\'; %Put in your featurepath byyear
 % roibasepath_generic = 'F:\BuddInlet\data\xxxx\'; %location of raw data
-% yrrange = 2021:2023;
-% micron_factor=1/3.8;
+% yrrange = 2021:2023; %years that you want summarized
+% micron_factor=1/3.8; %pixel to micron conversion
+% adhoc = 0.50; %adhoc score threshold of interest
 
 classfiles = [];
 filelistTB = [];
@@ -23,12 +25,6 @@ for i = 1:length(yrrange)
     classpath = regexprep(classpath_generic, 'xxxx', num2str(yr));
     feapath = regexprep(feapath_generic, 'xxxx', num2str(yr));
     roibasepath = regexprep(roibasepath_generic, 'xxxx', num2str(yr));
-
-    addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
-    addpath(genpath(summarydir_base));    
-    addpath(genpath(classpath));
-    addpath(genpath(feapath));
-    addpath(genpath(roibasepath));
 
     temp = dir([classpath 'D*.mat']);
     if ~isempty(temp) 
@@ -67,7 +63,7 @@ ESDTB = classcountTB;
 ESD_above_optthreshTB = classcountTB;
 ESD_above_adhocthreshTB = classcountTB;
 
-adhocthresh = 0.5.*ones(1,length(class2useTB)-1); %leave off 1 for unclassified
+adhocthresh = adhoc.*ones(1,length(class2useTB)-1); %leave off 1 for unclassified
 %adhocthresh(contains(class2useTB,'Dinophysis')) = 0.75; %example to change a specific class
 
 runtypeTB=filelistTB;
@@ -89,13 +85,9 @@ for i = 1:length(classfiles)
 
 end
 
-if ~exist([summarydir_base summaryfolder], 'dir')
-    mkdir(resultpath)
-end
-
-save([summarydir_base summaryfolder 'summary_biovol_allTB'] ,'*TB')
+save([summarydir 'summary_biovol_allTB'] ,'*TB')
 
 disp('Summary file stored here:')
-disp([summarydir_base summaryfolder 'summary_biovol_allTB'])
+disp([summarydir 'summary_biovol_allTB'])
 
 end

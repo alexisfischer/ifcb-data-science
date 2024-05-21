@@ -1,18 +1,18 @@
 function [ ] = summarize_class_cells_size_PNchains(summarydir,feapath_generic,roibasepath_generic,classpath_generic,micron_factor,yrrange)
 %function [ ] = summarize_class_cells_size_PNchains(summarydir,feapath_generic,roibasepath_generic,classpath_generic,micron_factor,yrrange)
-% Inputs classifier and features files and outputs a summary file of
-% minor axis length for all Pseudo-nitzschia chain lengths
+% Inputs class and features files and outputs a summary file of cell counts 
+% and minor axis length for all Pseudo-nitzschia chain lengths for 2 
+% different classifier outputs (winner takes all, opt score threshold)
 %
-% Alexis D. Fischer, NOAA NWFSC, April 2023
+% A.D. Fischer, April 2023
 %
-% Example inputs
-% clear
-% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\class\';
+% %Example inputs
+% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\class\'; %where you want the summary file to go
 % feapath_generic = 'D:\Shimada\features\xxxx\'; %Put in your featurepath byyear
 % roibasepath_generic = 'D:\Shimada\data\xxxx\'; %location of raw data
-% classpath_generic = 'D:\Shimada\class\CCS_NOAA-OSU_v7\classxxxx_v1\';
-% yrrange = 2019:2021;
-% micron_factor=1/3.8;
+% classpath_generic = 'D:\Shimada\class\CCS_NOAA-OSU_v7\classxxxx_v1\'; %location of classified data
+% yrrange = 2019:2021;  %years that you want summarized
+% micron_factor = 1/3.8; %pixel to micron conversion
 
 classfiles = [];
 filelistTB = [];
@@ -25,12 +25,6 @@ for i = 1:length(yrrange)
     classpath = regexprep(classpath_generic, 'xxxx', num2str(yr));
     feapath = regexprep(feapath_generic, 'xxxx', num2str(yr));
     roibasepath = regexprep(roibasepath_generic, 'xxxx', num2str(yr));
-    
-    addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
-    addpath(genpath(summarydir));    
-    addpath(genpath(classpath));
-    addpath(genpath(feapath));
-    addpath(genpath(roibasepath));    
 
     temp = dir([classpath 'D*.mat']);
     if ~isempty(temp) 

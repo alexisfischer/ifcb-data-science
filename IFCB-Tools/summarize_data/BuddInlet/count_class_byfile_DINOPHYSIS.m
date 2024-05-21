@@ -1,8 +1,7 @@
-function [dinocount_above_adhocthresh, dinobiovol_above_adhocthresh,...
-         dinoESD_above_adhocthresh, dinogray_above_adhocthresh,...
-         smallcount_above_adhocthresh,largecount_above_adhocthresh]...
-         = count_class_byfile_DINOPHYSIS(classfile, feafile, micron_factor, adhocthresh)
-%% summarizes total Dinophysis cell count and biovolume, mean gray level, 
+function [dinocount_above_adhocthresh, dinobiovol_above_adhocthresh,dinoESD_above_adhocthresh, dinogray_above_adhocthresh,smallcount_above_adhocthresh,largecount_above_adhocthresh] = count_class_byfile_DINOPHYSIS(classfile, feafile, micron_factor, adhocthresh)
+%function [dinocount_above_adhocthresh, dinobiovol_above_adhocthresh,dinoESD_above_adhocthresh, dinogray_above_adhocthresh,smallcount_above_adhocthresh,largecount_above_adhocthresh] = count_class_byfile_DINOPHYSIS(classfile, feafile, micron_factor, adhocthresh)
+%
+% summarizes total Dinophysis cell count and biovolume, mean gray level, 
 % mean size, and small and large size classes in each file
 % A.D. Fischer, April 2024
 %
@@ -27,7 +26,7 @@ targets.GrayLevel = feastruct.data(:,ind);
 len_f=height(feastruct.data);
 len_c=length(TBclass);
 if len_f == len_c
-    %disp('successful matchup')
+    %disp('successful matchup') %uncomment for troubleshooting
 else
     disp([classfile(end-36:end-21) ' - Mismatch between number of ROIs in class(' num2str(len_c) ') and feature(' num2str(len_f) ') files!'])
 end

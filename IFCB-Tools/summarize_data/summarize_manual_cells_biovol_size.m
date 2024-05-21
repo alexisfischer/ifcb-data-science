@@ -1,25 +1,20 @@
-function [ ] = summarize_manual_cells_biovol_size(manualpath,out_dir,roibasepath,feapath_base,micron_factor)
-%function [ ] = summarize_manual_cells_biovol_size(manualpath,out_dir,roibasepath,feapath_base,micron_factor)
+function [ ] = summarize_manual_cells_biovol_size(manualpath,summarydir,roibasepath,feapath_base,micron_factor)
+%function [ ] = summarize_manual_cells_biovol_size(manualpath,summarydir,roibasepath,feapath_base,micron_factor)
 %
 % Inputs manually classified results and outputs a summary file of counts,
 % total biovolume, and mean equivalent spherical diameter
 % A.D. Fischer, August 2021
-%%
-%Example inputs
-% manualpath = 'D:\Shimada\manual\'; %Where you want the summary file to go
-% out_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\';
-% roibasepath = 'D:\Shimada\data\'; %Where you raw data is
-% feapath_base = 'D:\Shimada\features\'; %Put in your featurepath byyear
-% micron_factor = 1/2.7; %USER PUT YOUR OWN microns per pixel conversion
+%
+% %Example inputs
+% manualpath = 'F:\Shimada\manual\'; %location of manual files
+% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\'; %Where you want the summary file to go
+% roibasepath = 'F:\Shimada\data\'; %location of raw data
+% feapath_base = 'F:\Shimada\features\'; %location of feature files
+%  micron_factor = 1/3.8; %microns per pixel conversion
 
 filelist = dir([manualpath 'D*.mat']);
  
-% for i=1:length(filelist)
-%     filelist(i).newname=filelist(i).name(1:24);
-% end
-
 % %calculate date
-% matdate = IFCB_file2date({filelist.newname});
 matdate = IFCB_file2date({filelist.name});
 
 % load([manualpath filelist(1).newname]) %read first file to get classes
@@ -29,8 +24,6 @@ class2use_manual_first = class2use_manual;
 classcount = NaN(length(filelist),numclass);  %initialize output
 classbiovol = classcount;
 eqdiam = classcount;
-majaxis = classcount;
-minaxis = classcount;
 ml_analyzed = NaN(length(filelist),1);
 
 %Loops over each file and pulls out, the parameters you want
@@ -85,6 +78,5 @@ notes2= 'Eqdiam and axis lengths in micrometers';
 %
 %saves the result file in the summary folder with a name that will be used 
 %every time this is run, but with the date you ran it ammended on the end
-save([out_dir 'count_class_biovol_manual'],...
-    'matdate','ml_analyzed','classcount','classbiovol','filelist',...
-    'class2use','eqdiam','notes1','notes2');
+save([summarydir 'count_class_biovol_manual'],'matdate','ml_analyzed', ...
+    'classcount','classbiovol','filelist','class2use','eqdiam','notes1','notes2');

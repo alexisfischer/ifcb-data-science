@@ -1,24 +1,24 @@
-function [ ] = summarize_features_biovol_size_byROI(out_dir,roibasepath,feapath_base,yr)
-%function [ ] = summarize_features_biovol_size_byROI(out_dir,roibasepath,feapath_base,yr)
+function [ ] = summarize_features_biovol_size_byROI(summarydir,roibasepath,feapath_base,yr)
+%function [ ] = summarize_features_biovol_size_byROI(summarydir,roibasepath,feapath_base,yr)
+% Inputs features files and outputs a summary file of biovolume and 
+% equivalent spherical diameter
 %
-% Inputs Features files and outputs a summary file of biovolume and equivalent spherical diameter
 % A.D. Fischer, September 2022
 %
-%% Example inputs
-clear;
-yr='2021';
-out_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\';
-roibasepath = 'F:\BuddInlet\data\'; %Where you raw data is
-feapath_base = ['F:\BuddInlet\features\' yr '\']; %Put in your featurepath byyear
+% %Example inputs
+% yr='2021'; %year of interest
+% roibasepath = 'F:\BuddInlet\data\'; %location of raw data
+% feapath_base = ['F:\BuddInlet\features\' yr '\']; %put in your featurepath by year
+% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\'; %where you want the summary file to go
+% adhoc = 0.50; %adhoc score threshold of interest
+% micron_factor=1/3.8; %pixel to micron conversion
 
-micron_factor = 1/3.8; %USER PUT YOUR OWN microns per pixel conversion
 filelist = dir([feapath_base 'D*.csv']);
 matdate = IFCB_file2date({filelist.name}); %calculate date
 runtype=cell(length(matdate),1);
 filecomment=runtype;
 ESD=cell(length(matdate),1);
 roi=ESD;
-
 for i = 1:length(filelist)
     filename = filelist(i).name;
     disp(filename)
@@ -39,9 +39,9 @@ for i = 1:length(filelist)
     clearvars hdrname feastruct ind;
 end
 
-save([out_dir 'eqdiam_biovol_' yr], 'filelist','filecomment','roi','ESD','runtype','matdate')
+save([summarydir 'eqdiam_biovol_' yr], 'filelist','filecomment','roi','ESD','runtype','matdate')
 
 disp('Summary file stored here:')
-disp([out_dir 'eqdiam_biovol_' yr])
+disp([summarydir 'eqdiam_biovol_' yr])
 
 end

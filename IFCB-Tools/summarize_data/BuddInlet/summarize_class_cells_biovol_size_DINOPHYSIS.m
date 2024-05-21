@@ -26,12 +26,6 @@ for i = 1:length(yrrange)
     feapath = regexprep(feapath_generic, 'xxxx', num2str(yr));
     roibasepath = regexprep(roibasepath_generic, 'xxxx', num2str(yr));
 
-    addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\'));
-    addpath(genpath(summarydir_base));    
-    addpath(genpath(classpath));
-    addpath(genpath(feapath));
-    addpath(genpath(roibasepath));
-
     temp = dir([classpath 'D*.mat']);
     if ~isempty(temp) 
         names = char(temp.name);

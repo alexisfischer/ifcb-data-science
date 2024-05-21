@@ -1,9 +1,7 @@
-function [classcount, classcount_above_optthresh, classcount_above_adhocthresh,...
-    classbiovol, classbiovol_above_optthresh, classbiovol_above_adhocthresh,...
-    ESD, ESD_above_optthresh, ESD_above_adhocthresh] = ...
-    count_class_byfile(classfile, feafile, micron_factor, adhocthresh)
+function [classcount, classcount_above_optthresh, classcount_above_adhocthresh,classbiovol, classbiovol_above_optthresh, classbiovol_above_adhocthresh,ESD,ESD_above_optthresh, ESD_above_adhocthresh] = count_class_cells_biovol_size_byfile(classfile, feafile, micron_factor, adhocthresh)
+%function [classcount, classcount_above_optthresh, classcount_above_adhocthresh,classbiovol, classbiovol_above_optthresh, classbiovol_above_adhocthresh,ESD,ESD_above_optthresh, ESD_above_adhocthresh] = count_class_cells_biovol_size_byfile(classfile, feafile, micron_factor, adhocthresh)
 % loads class and feature files corresponding to one sample and sums up 
-% cells, biovolume, and size for three different classifier outputs (winner 
+% cells, biovolume, and size for 3 different classifier outputs (winner 
 % takes all, opt score threshold, and adhoc threshold)
 %
 % A.D. Fischer, September 2022

@@ -3,11 +3,10 @@ function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
 % summarizes results for a series of manual annotation files (as saved by startMC)
 % A.D. Fischer, September 2022
 %%
-%Example inputs:
-% clear
-%  manualpath = 'D:\LabData\manual\'; %manual file location
-%  datapath = 'D:\LabData\data\'; %where to access data (hdr files)
-%  summary_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\LabData\manual\';
+% %Example inputs:
+%  manualpath = 'D:\LabData\manual\'; %location of manual data
+%  datapath = 'D:\LabData\data\'; %location of raw data
+%  summary_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\LabData\manual\'; %where you want the summary file to go
 
 %make sure input paths end with filesep
 if ~isequal(manualpath(end), filesep)
