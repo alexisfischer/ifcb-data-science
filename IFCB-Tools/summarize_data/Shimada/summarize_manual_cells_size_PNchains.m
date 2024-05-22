@@ -13,11 +13,11 @@ function [ ] = summarize_manual_cells_size_PNchains(summarydir,feapath_generic,r
 % %% Example inputs
 % clear
 % summarydir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\manual\';
-% feapath_generic = 'D:\Shimada\features\xxxx\'; %Put in your featurepath byyear
-% roibasepath_generic = 'D:\Shimada\data\xxxx\'; %location of raw data
-% manualpath = 'D:\Shimada\manual\';
-% yrrange = 2019:2021;
-% micron_factor=1/2.7;
+% feapath_generic = 'F:\Shimada\features\xxxx\'; %Put in your featurepath byyear
+% roibasepath_generic = 'F:\Shimada\data\xxxx\'; %location of raw data
+% manualpath = 'F:\Shimada\manual\';
+% yrrange = 2019:2023;
+% micron_factor=1/3.8;
 
 manualfiles = [];
 filelist = [];

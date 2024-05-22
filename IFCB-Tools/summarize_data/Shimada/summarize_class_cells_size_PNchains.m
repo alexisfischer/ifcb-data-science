@@ -8,10 +8,10 @@ function [ ] = summarize_class_cells_size_PNchains(summarydir,feapath_generic,ro
 %
 % %Example inputs
 % summarydir = 'C:\Users\ifcbuser\Documents\GitHub\bloom-baby-bloom\IFCB-Data\Shimada\class\'; %where you want the summary file to go
-% feapath_generic = 'D:\Shimada\features\xxxx\'; %Put in your featurepath byyear
-% roibasepath_generic = 'D:\Shimada\data\xxxx\'; %location of raw data
-% classpath_generic = 'D:\Shimada\class\CCS_NOAA-OSU_v7\classxxxx_v1\'; %location of classified data
-% yrrange = 2019:2021;  %years that you want summarized
+% feapath_generic = 'F:\Shimada\features\xxxx\'; %Put in your featurepath byyear
+% roibasepath_generic = 'F:\Shimada\data\xxxx\'; %location of raw data
+% classpath_generic = 'F:\Shimada\class\classxxxx_v1\'; %location of classified data
+% yrrange = 2019:2023;  %years that you want summarized
 % micron_factor = 1/3.8; %pixel to micron conversion
 
 classfiles = [];

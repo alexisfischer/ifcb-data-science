@@ -7,13 +7,13 @@ function [] = summarize_class_cells_biovol_size(summarydir,classpath_generic,fea
 % A.D. Fischer, September 2022
 %%
 %Example inputs
-summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\class\'; %where you want the summary file to go
-classpath_generic = 'F:\Shimada\class\CCS_NOAA-OSU_v7\classxxxx_v1\'; %location of classified data
-feapath_generic = 'F:\Shimada\features\xxxx\'; %Put in your featurepath byyear
-roibasepath_generic = 'F:\Shimada\data\xxxx\'; %location of raw data
-yrrange = 2023; %years that you want summarized
-micron_factor=1/3.8; %pixel to micron conversion
-adhoc = 0.50; %adhoc score threshold of interest
+% summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\class\'; %where you want the summary file to go
+% classpath_generic = 'F:\Shimada\class\CCS_NOAA-OSU_v7\classxxxx_v1\'; %location of classified data
+% feapath_generic = 'F:\Shimada\features\xxxx\'; %Put in your featurepath byyear
+% roibasepath_generic = 'F:\Shimada\data\xxxx\'; %location of raw data
+% yrrange = 2019:2023; %years that you want summarized
+% micron_factor=1/3.8; %pixel to micron conversion
+% adhoc = 0.50; %adhoc score threshold of interest
 
 classfiles = [];
 filelistTB = [];
