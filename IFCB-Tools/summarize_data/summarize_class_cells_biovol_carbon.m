@@ -1,5 +1,5 @@
-function [] = summarize_class_cells_biovol_carbon(summarydir,classindexpath,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
-%function [] = summarize_class_cells_biovol_carbon(summarydir,classindexpath,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+function [] = summarize_class_cells_biovol_carbon(roibasepath_generic,feapath_generic,classpath_generic,classindexpath,summarydir,micron_factor,yrrange)
+%function [] = summarize_class_cells_biovol_carbon(roibasepath_generic,feapath_generic,classpath_generic,classindexpath,summarydir,micron_factor,yrrange)
 % Inputs class and feature files and outputs a summary file of cell counts,
 % biovolume, and carbon, and for each class for 2 different
 % classifier outputs (winner takes all, opt score threshold)

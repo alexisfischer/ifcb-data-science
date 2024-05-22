@@ -1,5 +1,5 @@
-function [ ] = summarize_cells_from_classifier(roibasepath_generic,classpath_generic,summarydir,yrrange,adhoc)
-%function [ ] = summarize_cells_from_classifier(roibasepath_generic,classpath_generic,summarydir,yrrange,adhoc)
+function [ ] = summarize_cells_from_classifier(roibasepath_generic,classpath_generic,summarydir,adhoc,yrrange)
+%function [ ] = summarize_cells_from_classifier(roibasepath_generic,classpath_generic,summarydir,adhoc,yrrange)
 % Inputs classified data and outputs a summary file of cell counts for each 
 % class for 3 different different classifier outputs (winner takes all, opt 
 % score threshold, adhoc threshold)

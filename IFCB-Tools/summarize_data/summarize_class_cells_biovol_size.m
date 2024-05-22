@@ -1,5 +1,5 @@
-function [] = summarize_class_cells_biovol_size(summarydir,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
-%function [] = summarize_class_cells_biovol_size(summarydir,classpath_generic,feapath_generic,roibasepath_generic,micron_factor,yrrange)
+function [] = summarize_class_cells_biovol_size(roibasepath_generic,feapath_generic,classpath_generic,summarydir,micron_factor,adhoc,yrrange)
+%function [] = summarize_class_cells_biovol_size(roibasepath_generic,feapath_generic,classpath_generic,summarydir,micron_factor,adhoc,yrrange)
 % Inputs class and feature files and outputs a summary file of cell counts,
 % biovolume, and equivalent spherical diameter for 3 different
 % classifier outputs (winner takes all, opt score threshold, adhoc threshold)

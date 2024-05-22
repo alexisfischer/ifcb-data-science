@@ -1,5 +1,5 @@
-function [ ] = summarize_features_biovol_size_byROI(summarydir,roibasepath,feapath_base,yr)
-%function [ ] = summarize_features_biovol_size_byROI(summarydir,roibasepath,feapath_base,yr)
+function [ ] = summarize_features_biovol_size_byROI(roibasepath,feapath_base,summarydir,micron_factor,yr)
+%function [ ] = summarize_features_biovol_size_byROI(roibasepath,feapath_base,summarydir,micron_factor,yr)
 % Inputs features files and outputs a summary file of biovolume and 
 % equivalent spherical diameter
 %
@@ -10,7 +10,6 @@ function [ ] = summarize_features_biovol_size_byROI(summarydir,roibasepath,feapa
 % roibasepath = 'F:\BuddInlet\data\'; %location of raw data
 % feapath_base = ['F:\BuddInlet\features\' yr '\']; %put in your featurepath by year
 % summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\BuddInlet\'; %where you want the summary file to go
-% adhoc = 0.50; %adhoc score threshold of interest
 % micron_factor=1/3.8; %pixel to micron conversion
 
 filelist = dir([feapath_base 'D*.csv']);

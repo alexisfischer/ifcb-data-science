@@ -1,5 +1,5 @@
-function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,summarydir,roibasepath,feapath_base,yr,micron_factor)
-%function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,summarydir,roibasepath,feapath_base,yr,micron_factor)
+function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,roibasepath,feapath_base,summarydir,micron_factor,yr)
+%function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,roibasepath,feapath_base,summarydir,micron_factor,yr)
 % Inputs manually classified results and outputs a summary file of counts, 
 % biovolume, and equivalent spherical diameter for each roi
 %
@@ -10,7 +10,7 @@ function [ ] = summarize_manual_cells_biovol_size_byROI(manualpath,summarydir,ro
 %  manualpath = 'F:\Shimada\manual\'; %location of manual data
 %  summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shimada\manual\'; %where you want the summary file to go
 %  roibasepath = 'F:\Shimada\data\'; %location of raw data 
-%  feapath_base = 'F:\Shimada\features\2021\'; %put in your featurepath by year
+%  feapath_base = ['F:\Shimada\features\' yr '\']; %put in your featurepath by year
 %  micron_factor = 1/3.8; %microns per pixel conversion
 
 % determine where MC and feature files intersect

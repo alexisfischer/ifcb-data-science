@@ -1,6 +1,5 @@
-function [ ] = summarize_manual_cells_biovol_size(manualpath,summarydir,roibasepath,feapath_base,micron_factor)
-%function [ ] = summarize_manual_cells_biovol_size(manualpath,summarydir,roibasepath,feapath_base,micron_factor)
-%
+function [ ] = summarize_manual_cells_biovol_size(manualpath,roibasepath,feapath_base,summarydir,micron_factor)
+%function [ ] = summarize_manual_cells_biovol_size(manualpath,roibasepath,feapath_base,summarydir,micron_factor)
 % Inputs manually classified results and outputs a summary file of counts,
 % total biovolume, and mean equivalent spherical diameter
 % A.D. Fischer, August 2021

@@ -1,19 +1,20 @@
-function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
-%function [ ] = summarize_manual_cells( manualpath, datapath, summary_dir)
-% summarizes results for a series of manual annotation files (as saved by startMC)
+function [ ] = summarize_manual_cells(manualpath,roibasepath_generic,summarydir)
+%function [ ] = summarize_manual_cells(manualpath,roibasepath_generic,summarydir)
+% Inputs manually classified results and outputs a summary file of cell counts
+%
 % A.D. Fischer, September 2022
 %%
 % %Example inputs:
-%  manualpath = 'D:\LabData\manual\'; %location of manual data
-%  datapath = 'D:\LabData\data\'; %location of raw data
-%  summary_dir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\LabData\manual\'; %where you want the summary file to go
+%  manualpath = 'F:\LabData\manual\'; %location of manual data
+%  roibasepath_generic = 'F:\LabData\data\'; %location of raw data
+%  summarydir = 'C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\LabData\manual\'; %where you want the summary file to go
 
 %make sure input paths end with filesep
 if ~isequal(manualpath(end), filesep)
     manualpath = [manualpath filesep];
 end
-if ~isequal(datapath(end), filesep)
-    datapath = [datapath filesep];
+if ~isequal(roibasepath_generic(end), filesep)
+    roibasepath_generic = [roibasepath_generic filesep];
 end
 
 filelist = dir([manualpath 'D*.mat']);
@@ -33,7 +34,7 @@ for filecount = 1:length(filelist)
         
     filename = filelist(filecount).name;
     disp(filename)
-    hdrname = [datapath filename(2:5) filesep filename(1:9) filesep regexprep(filename, 'mat', 'hdr')]; 
+    hdrname = [roibasepath_generic filename(2:5) filesep filename(1:9) filesep regexprep(filename, 'mat', 'hdr')]; 
     ml_analyzed(filecount) = IFCB_volume_analyzed(hdrname);    
     hdr=IFCBxxx_readhdr2(hdrname);
     runtype{filecount}=hdr.runtype;
@@ -58,10 +59,10 @@ end
 
 class2use = class2use_manual_first;
 
-save([summary_dir 'count_class_manual'], 'matdate', 'ml_analyzed', 'classcount', 'filelist', 'class2use','runtype','filecomment')
+save([summarydir 'count_class_manual'], 'matdate', 'ml_analyzed', 'classcount', 'filelist', 'class2use','runtype','filecomment')
 
 disp('Summary cell count file stored here:')
-disp([summary_dir 'count_class_manual'])
+disp([summarydir 'count_class_manual'])
 
 return
 
