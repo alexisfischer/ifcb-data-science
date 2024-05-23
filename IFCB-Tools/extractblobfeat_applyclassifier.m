@@ -2,14 +2,14 @@
 %   Organizes raw IFCB data, extracts blobs and features, applies the
 %   classifier, and creates summary files for manual, class, and features files
 %   Also provides input for adjusting classlists (at bottom)
-%   This workflow uses code in hsosik/ifcb-analysis/ and alexisfischer/ifcb-data-science/
+%   This workflow uses code in hsosik\ifcb-analysis\ and alexisfischer\ifcb-data-science\
 %
-%   A.D Fischer, May 2024
+%   A.D. Fischer, May 2024
 
 clear;
 
-%%%% USER specify year for data processing
-yr='2024'; %2019 %2021 %2022 %2023
+%%%% USER specify year for data processing (those functions only do one year at a time)
+yr='2024'; %'2019' %'2021' %'2022' %'2023'
 
 %%%% USER specify IFCB data paths
 ifcbdir='F:\Shimada\'; 
@@ -23,7 +23,7 @@ summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shima
 classifier='F:\general\classifier\summary\Trees_CCS_NOAA-OSU_v7'; %our Northern CA Current System random forest classifier
 %classifier='F:\general\classifier\summary\Trees_BI_NOAA_v15'; %our Budd Inlet random forest classifier
 
-%% Organize and Process the data
+%% Organize and Process the data (uses hsosik\ifcb-analysis\)
 addpath(genpath(ifcbdir)); %add to your MATLAB paths
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\')); %add to your MATLAB paths
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\')); %add to your MATLAB paths
@@ -41,7 +41,7 @@ start_feature_batch_user_training([ifcbdir 'data\' yr '\'],[ifcbdir 'blobs\' yr 
 % Step 4: Apply classifier
 start_classify_batch_user_training(classifier,[ifcbdir 'features\' yr '\'],[ifcbdir 'class\v15\class' yr '_v1\']);
 
-%% Summarize class files
+%% Summarize class files (uses alexisfischer\ifcb-data-science\)
 %%%% USER
 yrrange = 2021:2023; %years that you want summarized
 adhoc = 0.50; %adhoc score threshold of interest
@@ -57,7 +57,7 @@ summarize_class_cells_biovol_size([ifcbdir 'data\xxxx\'],[ifcbdir 'features\xxxx
 % Option 3: summarize cell counts, biovolume, and carbon for 2 different classifier outputs (winner takes all, opt score threshold)
 summarize_class_cells_biovol_carbon([ifcbdir 'data\xxxx\'],[ifcbdir 'features\xxxx\'],[ifcbdir 'data\class\classxxxx_v1\'],classindexpath,[summarydir 'class\'],micron_factor,yrrange)
 
-%% Summarize manual annotations
+%% Summarize manual annotations (uses alexisfischer\ifcb-data-science\)
 %%%% USER
 micron_factor=1/3.8; %pixel to micron conversion
 
@@ -67,7 +67,8 @@ summarize_manual_cells([ifcbdir 'manual\'],[ifcbdir 'data\'],[summarydir 'manual
 % Option 2: summarize cell counts, biovolume, and mean size for manual annotations
 summarize_manual_cells_biovol_size([ifcbdir 'manual\'],[ifcbdir 'data\'],[ifcbdir 'features\'],[summarydir 'manual\'],micron_factor)
 
-%% Summarize ROI size and biovolume (use for particle size distribution plots)
+%% Summarize ROI size and biovolume (uses alexisfischer\ifcb-data-science\)
+% use these summaries to make particle size distribution plots
 %%%% USER
 micron_factor=1/3.8; %pixel to micron conversion
 yr='2021'; %year you want summarized
