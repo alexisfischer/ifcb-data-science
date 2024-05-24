@@ -23,7 +23,7 @@ summarydir='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\IFCB-Data\Shima
 classifier='F:\general\classifier\summary\Trees_CCS_NOAA-OSU_v7'; %our Northern CA Current System random forest classifier
 %classifier='F:\general\classifier\summary\Trees_BI_NOAA_v15'; %our Budd Inlet random forest classifier
 
-%% Organize and Process the data (uses hsosik\ifcb-analysis\)
+%% Organize and Process the data (uses hsosik\ifcb-analysis\ and alexisfischer\ifcb-data-science\)
 addpath(genpath(ifcbdir)); %add to your MATLAB paths
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-analysis\')); %add to your MATLAB paths
 addpath(genpath('C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\')); %add to your MATLAB paths
@@ -39,7 +39,7 @@ start_blob_batch_user_training([ifcbdir 'data\' yr '\'],[ifcbdir 'blobs\' yr '\'
 start_feature_batch_user_training([ifcbdir 'data\' yr '\'],[ifcbdir 'blobs\' yr '\'],[ifcbdir 'features\' yr '\'],true)
 
 % Step 4: Apply classifier
-start_classify_batch_user_training(classifier,[ifcbdir 'features\' yr '\'],[ifcbdir 'class\v15\class' yr '_v1\']);
+start_classify_batch_user_training(classifier,[ifcbdir 'features\' yr '\'],[ifcbdir 'class\class' yr '_v1\']);
 
 %% Summarize class files (uses alexisfischer\ifcb-data-science\)
 %%%% USER
