@@ -1,18 +1,18 @@
 % A.D. Fischer, January 2023
 clear;
 Mac=0;
-%name='CCS_NOAA-OSU_v7';
+name='CCS_NOAA-OSU_v7';
 %name='BI_NOAA-OSU_v2';
-name='BI_NOAA_v15';
+%name='BI_NOAA_v15';
 
 if Mac
     basepath = '~/Documents/MATLAB/ifcb-data-science/';    
-    filepath = [basepath 'IFCB-Data/BuddInlet/class/'];
+    filepath = [basepath 'IFCB-Data/Shimada/class/'];
     classidx=[basepath 'IFCB-Tools/convert_index_class/class_indices.mat'];
     figpath = [filepath 'Figs/'];
 else
     basepath='C:\Users\ifcbuser\Documents\GitHub\ifcb-data-science\';
-    filepath = [basepath 'IFCB-Data\BuddInlet\class\'];
+    filepath = [basepath 'IFCB-Data\Shimada\class\'];
     classidx=[basepath 'IFCB-Tools\convert_index_class\class_indices.mat'];    
     figpath = [filepath 'Figs\'];    
 end
@@ -36,72 +36,18 @@ maxn=round(max([opt.total]),-2);
 %% plot stacked total in set
 figure('Units','inches','Position',[1 1 7 4],'PaperPositionMode','auto');
 col=[(brewermap(3,'Set2'));[.1 .1 .1]]; 
-b = bar([trainingset.BI trainingset.NCC],'stack','linestyle','none','Barwidth',.7);
+b = bar([trainingset.NOAA trainingset.OSU],'stack','linestyle','none','Barwidth',.7);
 for i=1:length(b)
     set(b(i),'FaceColor',col(i,:));
 end  
 set(gca,'xlim',[0.5 (length(class)+.5)], 'xtick', 1:length(class), 'ylim',[0 maxn],...
     'xticklabel', class,'tickdir','out');
 ylabel('total images in set'); hold on
-lh=legend('BI','NCC','Location','NorthOutside');
+lh=legend('NCC','OSU','Location','NorthOutside');
 
 set(gcf,'color','w');
 exportgraphics(gca,[figpath 'TrainingSet_' name '.png'],'Resolution',300)    
 hold off
-
-% %% F1 scores Winner take all
-% % plot bar Recall and Precision, sort by F1
-% [all,~]=sortrows(all,'F1','descend');
-% [~,class_s]=get_class_ind( all.class, 'all', classidx);
-% 
-% figure('Units','inches','Position',[1 1 7 4],'PaperPositionMode','auto');
-% yyaxis left;
-% b=bar([all.R all.P],'Barwidth',1,'linestyle','none'); hold on
-% hline(.9,'k--');
-% set(gca,'ycolor','k', 'xtick', 1:length(class_s), 'xticklabel', class_s); hold on
-% ylabel('Performance');
-% col=flipud(brewermap(2,'RdBu')); 
-% for i=1:length(b)
-%     set(b(i),'FaceColor',col(i,:));
-% end  
-% yyaxis right;
-% plot(1:length(class_s),all.total,'k*'); hold on
-% ylabel('total images in set');
-% set(gca,'ycolor','k', 'xtick', 1:length(class_s),'ylim',[0 maxn], 'xticklabel', class_s); hold on
-% legend('Sensitivity', 'Precision','Location','W')
-% title(['Winner-takes-all: ' num2str(length(class)) ' classes ranked by F1 score'])
-% xtickangle(45);
-% 
-% set(gcf,'color','w');
-% exportgraphics(gca,[figpath 'F1score_all_' name '.png'],'Resolution',100)    
-% hold off
-% 
-% %% Winner takes All
-% %plot manual vs classifier checkerboard
-% figure('Units','inches','Position',[1 1 7 6],'PaperPositionMode','auto');
-% cplot = zeros(size(c_all)+1);
-% cplot(1:length(class),1:length(class)) = c_all;
-% total=[sum(c_all,2);0];
-% fx_unclass=sum(c_all(:,end))./sum(total);   % what fraction of images went to unclassified?
-% 
-% C = bsxfun(@rdivide, cplot, total); C(isnan(C)) = 0;
-% pcolor(C); col=flipud(brewermap([],'Spectral')); colormap([ones(1,3); col]); 
-% set(gca,'ylim',[1 (length(class)+1)],'xlim',[1 (length(class)+1)],...
-%     'ytick',1.5:1:(length(class)+.5), 'yticklabel', class,...
-%     'xtick',1.2:1:(length(class)+.2), 'xticklabel',class)
-% 
-% axis square;  col=colorbar; caxis([0 1])
-% colorTitleHandle = get(col,'Title');
-% titleString = {'Fx of test'; 'images/class'};
-% set(colorTitleHandle ,'String',titleString);
-% 
-% ylabel('Actual Classifications','fontweight','bold');
-% xlabel('Predicted Classifications','fontweight','bold')
-% title('Winner-takes-all');
-% 
-% set(gcf,'color','w');
-% exportgraphics(gca,[figpath 'confusion_matrix_all_' name '.png'],'Resolution',100)    
-% hold off
 
 %% F1 scores Winner take all, above adhocthresh
 % plot bar Recall and Precision, sort by F1
