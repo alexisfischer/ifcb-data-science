@@ -12,10 +12,9 @@ filepath = '~/Documents/MATLAB/ifcb-data-science/'; % enter your path
 addpath(genpath(filepath)); % add new data to search path
 addpath(genpath('~/Documents/MATLAB/ifcb-analysis/')); % add new data to search path
 load([filepath 'IFCB-Data/Shimada/manual/count_class_manual'],...
-    'class2use','classcount','matdate','ml_analyzed','filelist'); % manual data summary
-load([filepath 'IFCB-Data/Shimada/class/summary_biovol_allTB'],'class2useTB',...
-    'classcountTB','classcount_above_optthreshTB','classcount_above_adhocthreshTB',...
-    'filelistTB','mdateTB','ml_analyzedTB'); %classified data summary
+    'class2use','classcount','matdate','ml_analyzed','filelist'); % manual data summary from "summarize_manual_cells"
+load([filepath 'IFCB-Data/Shimada/class/summary_biovol_allTB'],'class2useTB','classcount_above_optthreshTB',...
+    'filelistTB','mdateTB','ml_analyzedTB'); %classified data summary from "summarize_class_cells_biovol_size"
 
 %%%% find and select matching manual and class files using filenames
 for i=1:length(filelist)

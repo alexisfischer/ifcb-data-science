@@ -5,7 +5,7 @@ clear;
 
 %%%%USER
 fprint = 1; % 1 = print; 0 = don't
-class2do_full='Thalassiosira_chain'; %class to plot
+class2do_full='Asterionellopsis'; %class to plot
 type='opt'; %'adhoc' %'all' select your classifier output. Note:'opt' is the final CCS classifier
 filepath = '~/Documents/MATLAB/ifcb-data-science/'; % enter your path
 
