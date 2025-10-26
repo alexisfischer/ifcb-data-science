@@ -84,7 +84,7 @@ stem(matdate,auto./ml_analyzedTB,'k-','Linewidth',.5,'Marker','none'); hold on; 
     ylabel(yr,'fontsize',12);    
  
 % set figure parameters
-exportgraphics(gcf,[outpath 'Manual_automated_' num2str(class2do_string) ' ' type '.png'],'Resolution',100)    
+exportgraphics(gcf,[outpath 'Manual_automated_' num2str(class2do_string) ' ' type '.png'],'Resolution',300)    
 hold off
 
 % 
